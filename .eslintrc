@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "globals": {
+    "console": true,
+    "document": true
+  },
+  "rules": {
+    "no-var": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "prettier/prettier": "error"
+  }
+}
