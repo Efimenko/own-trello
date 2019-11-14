@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "react": {
+      "version": "detect",
+    }
+  },
   "plugins": [
     "react",
     "react-hooks",
@@ -8,13 +13,14 @@
   "parser": "babel-eslint",
   "globals": {
     "console": true,
-    "document": true,
-    "PropTypes": true
+    "document": true
   },
   "rules": {
     "no-var": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    "prettier/prettier": "error"
+    "react/prop-types": 2,
+    "prettier/prettier": "error",
+    "react/no-multi-comp": 1
   }
 }

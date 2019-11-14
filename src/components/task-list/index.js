@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TaskList = ({tasks}) =>
-  Boolean(tasks.length) && (
+const TaskList = ({tasks}) => {
+  if (!tasks.length) return null
+
+  return (
     <ul>
       {tasks.map((task) => (
         <li key={task.id}>
@@ -12,6 +14,7 @@ const TaskList = ({tasks}) =>
       ))}
     </ul>
   )
+}
 
 TaskList.propTypes = {
   tasks: PropTypes.array.isRequired,

@@ -1,16 +1,21 @@
 import React, {useState, Fragment} from 'react'
-import {Form, TaskList} from './components'
+import {GroupList, AddGroupForm} from './components'
 import './style.css'
 
 const App = () => {
   const [tasks, setTasks] = useState([])
-  const addNewTask = (task) => setTasks([...tasks, task])
+  const addNewTask = (parentId) => (task) =>
+    setTasks([...tasks, {...task, parent: parentId}])
+
+  const [groups, setGroups] = useState([])
+  const addNewGroup = (group) => setGroups([...groups, group])
 
   return (
     <Fragment>
-      <Form addNewTask={addNewTask} />
-      <TaskList tasks={tasks} />
+      <GroupList tasks={tasks} groups={groups} addNewTask={addNewTask} />
+      <AddGroupForm addNewGroup={addNewGroup} />
     </Fragment>
   )
 }
+
 export default App
