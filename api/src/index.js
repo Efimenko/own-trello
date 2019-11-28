@@ -1,7 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
 const taskRouter = require('./routes/task')
+const groupRouter = require('./routes/group')
+
+mongoose.connect('mongodb://localhost:27017/trello', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 /* Initiate express app */
 const app = express()
@@ -18,6 +25,7 @@ app.use((req, res, next) => {
 })
 
 app.use(taskRouter)
+app.use(groupRouter)
 
 /* Return 404 status when there is not some route */
 app.use((req, res) => {

@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/trello', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+const {Schema} = mongoose
 
-const TaskSchema = new mongoose.Schema({
+const TaskSchema = new Schema({
+  parent: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   title: {
     type: String,
     require: true,
