@@ -11,7 +11,7 @@ const Form = ({addNewTask}) => {
   const resetTextarea = () => setTextareaValue('')
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    addNewTask({id: Date.now(), title: inputValue, description: textareaValue})
+    addNewTask({title: inputValue, description: textareaValue})
     resetInput()
     resetTextarea()
   }
