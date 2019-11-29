@@ -1,5 +1,13 @@
-import {setGroups} from '../groups'
-import {setTasks} from '../tasks'
+import types from '../../types'
+
+const dataReady = () => ({
+  type: types.SET_DATA_READY,
+})
+
+const setInitData = (payload) => ({
+  type: types.SET_INIT_DATA,
+  payload,
+})
 
 /* Async action creator for fetch groups and tasks */
 export const init = () => {
@@ -11,8 +19,7 @@ export const init = () => {
       response.json()
     )
     Promise.all([fetchGroups, fetchTasks]).then(([groups, tasks]) => {
-      dispatch(setGroups(groups))
-      dispatch(setTasks(tasks))
+      dispatch(setInitData({groups, tasks}))
     })
   }
 }

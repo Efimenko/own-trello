@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react'
+import React, {useRef, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
@@ -6,17 +6,14 @@ import {generalActions} from './store/actions/creators'
 import {GroupList, AddGroupForm} from './components'
 import './style.css'
 
-const App = ({tasks, groups, dispatch}) => {
-  const [dataFetched, setDataFetched] = useState(groups && tasks)
-  if (!dataFetched) {
+const App = ({tasks, groups, dataReady, dispatch}) => {
+  const fetchDataInitiated = useRef(false)
+  if (!dataReady && !fetchDataInitiated.current) {
     dispatch(generalActions.init())
+    fetchDataInitiated.current = true
   }
 
-  if (tasks && groups && !dataFetched) {
-    setDataFetched(true)
-  }
-
-  return !dataFetched ? (
+  return !dataReady ? (
     'Loading...'
   ) : (
     <Fragment>
@@ -37,6 +34,7 @@ App.propTypes = {
   // },
   tasks: PropTypes.array,
   groups: PropTypes.array,
+  dataReady: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
 
@@ -45,9 +43,10 @@ App.defaultProps = {
   groups: null,
 }
 
-const mapStateToProps = ({tasks, groups}) => ({
+const mapStateToProps = ({tasks, groups, dataReady}) => ({
   tasks,
   groups,
+  dataReady,
 })
 
 export default connect(mapStateToProps)(App)
