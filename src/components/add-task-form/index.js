@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-const Form = ({addNewTask}) => {
+import {tasksActions} from '../../store/actions/creators'
+
+const AddTaskForm = ({parentId, dispatch}) => {
   const [inputValue, setInputValue] = useState('')
   const [textareaValue, setTextareaValue] = useState('')
 
@@ -9,9 +12,18 @@ const Form = ({addNewTask}) => {
   const handleTextareaChange = (event) => setTextareaValue(event.target.value)
   const resetInput = () => setInputValue('')
   const resetTextarea = () => setTextareaValue('')
+
+  const addNewTask = (task) => {
+    dispatch(tasksActions.asyncAddTask(task))
+  }
+
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    addNewTask({title: inputValue, description: textareaValue})
+    addNewTask({
+      title: inputValue,
+      description: textareaValue,
+      parent: parentId,
+    })
     resetInput()
     resetTextarea()
   }
@@ -40,8 +52,9 @@ const Form = ({addNewTask}) => {
   )
 }
 
-Form.propTypes = {
-  addNewTask: PropTypes.func.isRequired,
+AddTaskForm.propTypes = {
+  parentId: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
-export default Form
+export default connect()(AddTaskForm)

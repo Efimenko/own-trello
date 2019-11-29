@@ -29,6 +29,16 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         dataReady: true,
       }
+    case types.ADD_GROUP:
+      return {
+        ...state,
+        groups: [...state.groups, payload],
+      }
+    case types.ADD_TASK:
+      return {
+        ...state,
+        tasks: [...state.tasks, payload],
+      }
     default:
       return state
   }

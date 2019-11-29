@@ -1,10 +1,13 @@
 import types from '../../types'
 
+/* Action creator for add group to store */
 export const addGroup = (payload) => ({
   type: types.ADD_GROUP,
   payload,
 })
 
+/* Async action creator for add group on api
+and then returned value set to store */
 export const asyncAddGroup = (payload) => {
   return (dispatch) => {
     fetch('http://localhost:4000/group/add', {

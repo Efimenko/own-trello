@@ -1,7 +1,7 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
 
-import Form from '../form'
+import AddTaskForm from '../add-task-form'
 import TaskList from '../task-list'
 
 const getTasksByParentId = ({parentId, tasks}) =>
@@ -9,14 +9,14 @@ const getTasksByParentId = ({parentId, tasks}) =>
 
 const GroupList = ({groups, tasks}) => {
   if (!groups.length) return null
-
+  console.log({tasks})
   return (
     <div>
-      {groups.map(({id, title}) => (
-        <section key={id}>
+      {groups.map(({_id, title}) => (
+        <section key={_id}>
           <h2>{title}</h2>
-          <Form />
-          <TaskList tasks={getTasksByParentId({parentId: id, tasks})} />
+          <AddTaskForm parentId={_id} />
+          <TaskList tasks={getTasksByParentId({parentId: _id, tasks})} />
         </section>
       ))}
     </div>
@@ -25,7 +25,6 @@ const GroupList = ({groups, tasks}) => {
 
 GroupList.propTypes = {
   groups: PropTypes.array.isRequired,
-  addNewTask: PropTypes.func.isRequired,
   tasks: PropTypes.array.isRequired,
 }
 
