@@ -20,10 +20,6 @@ router.get('/task/:id', (req, res) => {
 
 /* Create new task */
 router.post('/task/add', (req, res) => {
-  if (!req.body) {
-    res.status(400).send('Request body is missing')
-  }
-
   const task = new TaskSchema(req.body)
   task
     .save()

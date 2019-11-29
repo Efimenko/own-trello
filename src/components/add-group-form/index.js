@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-const AddGroupForm = ({addNewGroup}) => {
+import {groupsActions} from '../../store/actions/creators'
+
+const AddGroupForm = ({dispatch}) => {
   const [newGroupInputValue, setNewGroupInputValue] = useState('')
   const handleChangeNewGroupInputValue = (value) => setNewGroupInputValue(value)
 
@@ -12,9 +15,13 @@ const AddGroupForm = ({addNewGroup}) => {
   const showFormForCreationNewGroup = () =>
     setIsShownFormForCreationNewGroup(true)
 
+  const addNewGroup = (payload) => {
+    dispatch(groupsActions.asyncAddGroup(payload))
+  }
+
   const handleSubmitNewGroupForm = (event) => {
     event.preventDefault()
-    addNewGroup({id: Date.now(), title: newGroupInputValue})
+    addNewGroup({title: newGroupInputValue})
     setNewGroupInputValue('')
     setIsShownFormForCreationNewGroup(false)
   }
@@ -38,7 +45,7 @@ const AddGroupForm = ({addNewGroup}) => {
 }
 
 AddGroupForm.propTypes = {
-  addNewGroup: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
-export default AddGroupForm
+export default connect()(AddGroupForm)

@@ -2,27 +2,47 @@ import React, {useState, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import {addTask, addGroup} from './store/actions/creators'
+import {generalActions} from './store/actions/creators'
 import {GroupList, AddGroupForm} from './components'
 import './style.css'
 
-const App = ({tasks, groups}) => {
-  const addNewTask = (parentId) => (task) =>
-    setTasks([...tasks, {...task, parent: parentId}])
+const App = ({tasks, groups, dispatch}) => {
+  const [dataFetched, setDataFetched] = useState(groups && tasks)
+  if (!dataFetched) {
+    dispatch(generalActions.init())
+  }
 
-  const addNewGroup = (group) => setGroups([...groups, group])
+  if (tasks && groups && !dataFetched) {
+    setDataFetched(true)
+  }
 
-  return (
+  return !dataFetched ? (
+    'Loading...'
+  ) : (
     <Fragment>
-      <GroupList tasks={tasks} groups={groups} addNewTask={addNewTask} />
-      <AddGroupForm addNewGroup={addNewGroup} />
+      <GroupList tasks={tasks} groups={groups} />
+      <AddGroupForm />
     </Fragment>
   )
 }
 
 App.propTypes = {
-  tasks: PropTypes.object.isRequired,
-  groups: PropTypes.object.isRequred,
+  // tasks: function(props, propName, componentName) {
+  //   const propValue = props[propName]
+  //   if (propValue === null) return
+  //   if (Array.isArray(propValue)) return
+  //   return new Error(
+  //     `${componentName} only accepts null or array, but its value is \`${propValue}\``
+  //   )
+  // },
+  tasks: PropTypes.array,
+  groups: PropTypes.array,
+  dispatch: PropTypes.func.isRequired,
+}
+
+App.defaultProps = {
+  tasks: null,
+  groups: null,
 }
 
 const mapStateToProps = ({tasks, groups}) => ({

@@ -7,7 +7,7 @@ import TaskList from '../task-list'
 const getTasksByParentId = ({parentId, tasks}) =>
   tasks.filter((task) => task.parent === parentId)
 
-const GroupList = ({groups, addNewTask, tasks}) => {
+const GroupList = ({groups, tasks}) => {
   if (!groups.length) return null
 
   return (
@@ -15,7 +15,7 @@ const GroupList = ({groups, addNewTask, tasks}) => {
       {groups.map(({id, title}) => (
         <section key={id}>
           <h2>{title}</h2>
-          <Form addNewTask={addNewTask(id)} />
+          <Form />
           <TaskList tasks={getTasksByParentId({parentId: id, tasks})} />
         </section>
       ))}

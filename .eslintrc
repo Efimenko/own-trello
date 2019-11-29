@@ -8,7 +8,9 @@
   "parser": "babel-eslint",
   "globals": {
     "console": true,
-    "document": true
+    "document": true,
+    "fetch": true,
+    "Promise": true
   },
   "rules": {
     "no-var": "error",

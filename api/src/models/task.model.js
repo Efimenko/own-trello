@@ -9,11 +9,11 @@ const TaskSchema = new Schema({
   },
   title: {
     type: String,
-    require: true,
+    required: true,
   },
   description: {
     type: String,
-    require: true,
+    required: true,
   },
 })
 

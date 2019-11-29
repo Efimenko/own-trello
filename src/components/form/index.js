@@ -26,6 +26,7 @@ const Form = ({addNewTask}) => {
         id="task-title-input"
         required
       />
+      <br />
       <label htmlFor="task-description-input">Description</label>
       <textarea
         placeholder="Type some description"

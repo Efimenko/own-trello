@@ -12,10 +12,6 @@ router.get('/groups', (req, res) => {
 
 /* Create new group */
 router.post('/group/add', (req, res) => {
-  if (!req.body) {
-    res.status(400).send('Request body is missing')
-  }
-
   const group = new GroupSchema(req.body)
   group
     .save()

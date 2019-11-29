@@ -1,5 +1,7 @@
 {
   "eslint.autoFixOnSave": true,
   "prettier.eslintIntegration": false,
-  "prettier.stylelintIntegration": false
+  "prettier.stylelintIntegration": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false
 }

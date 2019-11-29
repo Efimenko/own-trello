@@ -5,7 +5,7 @@ const {Schema} = mongoose
 const GroupSchema = new Schema({
   title: {
     type: String,
-    require: true,
+    required: true,
   },
 })
 
