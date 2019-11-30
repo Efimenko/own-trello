@@ -1,5 +1,6 @@
 import React, {useRef, Fragment} from 'react'
 import PropTypes from 'prop-types'
+import {or, explicitNull} from 'airbnb-prop-types'
 import {connect} from 'react-redux'
 
 import {generalActions} from './store/actions/creators'
@@ -24,16 +25,8 @@ const App = ({tasks, groups, dataReady, dispatch}) => {
 }
 
 App.propTypes = {
-  // tasks: function(props, propName, componentName) {
-  //   const propValue = props[propName]
-  //   if (propValue === null) return
-  //   if (Array.isArray(propValue)) return
-  //   return new Error(
-  //     `${componentName} only accepts null or array, but its value is \`${propValue}\``
-  //   )
-  // },
-  tasks: PropTypes.array,
-  groups: PropTypes.array,
+  tasks: or([explicitNull, PropTypes.array]).isRequired,
+  groups: or([explicitNull, PropTypes.array]).isRequired,
   dataReady: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
