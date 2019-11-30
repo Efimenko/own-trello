@@ -29,3 +29,23 @@ export const setTasks = (payload) => ({
   type: types.SET_TASKS,
   payload,
 })
+
+export const removeTask = (taskId) => ({
+  type: types.REMOVE_TASK,
+  payload: taskId,
+})
+
+export const asyncRemoveTask = (taskId) => {
+  return (dispatch) => {
+    fetch(`http://localhost:4000/task/remove/${taskId}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok && data.deletedCount) {
+          dispatch(removeTask(taskId))
+        }
+      })
+      .catch((error) => console.error(error))
+  }
+}

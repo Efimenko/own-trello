@@ -32,4 +32,11 @@ router.post('/task/add', (req, res) => {
     })
 })
 
+/* Delete task by id */
+router.delete('/task/remove/:id', (req, res) => {
+  TaskSchema.deleteOne({_id: req.params.id})
+    .then((data) => res.json(data))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
 module.exports = router

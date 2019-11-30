@@ -9,7 +9,7 @@ const getTasksByParentId = ({parentId, tasks}) =>
 
 const GroupList = ({groups, tasks}) => {
   if (!groups.length) return null
-  console.log({tasks})
+
   return (
     <div>
       {groups.map(({_id, title}) => (
