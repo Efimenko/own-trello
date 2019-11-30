@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 
 const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
+const logger = require('./logger')
 
 mongoose.connect('mongodb://localhost:27017/trello', {
   useNewUrlParser: true,
@@ -22,11 +23,7 @@ app.use(function(req, res, next) {
 })
 
 app.use((req, res, next) => {
-  console.log(
-    `${new Date().toString()}: Request: ${
-      req.originalUrl
-    } Body: ${JSON.stringify(req.body)}`
-  )
+  logger.info(`Request: ${req.originalUrl} Body: ${JSON.stringify(req.body)}`)
   next()
 })
 
@@ -40,9 +37,9 @@ app.use((req, res) => {
 
 /* Return 500 status when some error happened */
 app.use((err, req, res) => {
-  console.error(err.stack)
+  logger.error({err: err.stack})
   res.status(500).send('Internal server error')
 })
 
 const PORT = process.env.PORT || 3000
-app.listen(PORT, () => console.log(`API running on ${PORT} port`))
+app.listen(PORT, () => logger.info(`API running on ${PORT} port`))

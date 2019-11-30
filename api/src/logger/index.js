@@ -1,4 +1,10 @@
 const bunyan = require('bunyan')
-const logger = bunyan.createLogger({name: 'app'})
+
+const conf = {
+  name: 'trello-parcel',
+  streams: [{stream: process.stdout, level: 'info'}],
+  serializers: {req: bunyan.stdSerializers.req, res: bunyan.stdSerializers.res},
+}
+const logger = bunyan.createLogger(conf)
 
 module.exports = logger
