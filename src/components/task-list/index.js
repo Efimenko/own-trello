@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
+import TaskItem from '../task-item'
 import {tasksActions} from '../../store/actions/creators'
 
 const TaskList = ({tasks, dispatch}) => {
@@ -15,11 +16,7 @@ const TaskList = ({tasks, dispatch}) => {
     <ul>
       {tasks.map((task) => (
         <li key={task._id}>
-          <h2>{task.title}</h2>
-          <p>{task.description}</p>
-          <button type="button" onClick={handleRemoveTask(task._id)}>
-            Remove task
-          </button>
+          <TaskItem task={task} handleRemoveTask={handleRemoveTask} />
         </li>
       ))}
     </ul>
