@@ -34,7 +34,7 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         groups: [...state.groups, payload],
       }
-    case types.ADD_TASK:
+    case types.ADD_TASK_FULFILLED:
       return {
         ...state,
         tasks: [...state.tasks, payload],

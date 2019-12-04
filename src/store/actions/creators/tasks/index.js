@@ -1,34 +1,30 @@
 import types from '../../types'
 
-/* Action creator for add task to store */
-export const addTask = (payload) => ({
+/* Add task action creators */
+
+export const addTask = (newTask) => ({
   type: types.ADD_TASK,
-  payload,
+  payload: newTask,
 })
 
-/* Async action creator for add task on api
-and then returned value set to store */
-export const asyncAddTask = (payload) => {
-  return (dispatch) => {
-    fetch('http://localhost:4000/task/add', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => response.json())
-      .then((data) => dispatch(addTask(data)))
-      .catch((error) => console.error(error))
-  }
-}
+export const addTaskFulfilled = (task) => ({
+  type: types.ADD_TASK_FULFILLED,
+  payload: task,
+})
 
-/* Action creator for set tasks to store */
-export const setTasks = (payload) => ({
+export const addTaskFailed = (message) => ({
+  type: types.ADD_TASK_FAILED,
+  payload: message,
+})
+
+/* Set list of task action creator */
+
+export const setTasks = (tasks) => ({
   type: types.SET_TASKS,
-  payload,
+  payload: tasks,
 })
+
+/* Remove task action creators */
 
 export const removeTask = (taskId) => ({
   type: types.REMOVE_TASK,
@@ -40,17 +36,7 @@ export const removeTaskFulfilled = (taskId) => ({
   payload: taskId,
 })
 
-export const asyncRemoveTask = (taskId) => {
-  return (dispatch) => {
-    fetch(`http://localhost:4000/task/remove/${taskId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.ok && data.deletedCount) {
-          dispatch(removeTask(taskId))
-        }
-      })
-      .catch((error) => console.error(error))
-  }
-}
+export const removeTaskFailed = (message) => ({
+  type: types.REMOVE_TASK_FAILED,
+  payload: message,
+})

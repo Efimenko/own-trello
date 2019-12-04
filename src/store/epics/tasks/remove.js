@@ -17,10 +17,12 @@ export const removeTaskEpic = (action$) => {
           if (response.ok && response.deletedCount) {
             return tasksActions.removeTaskFulfilled(payload)
           } else {
-            throw new Error('Seems like it was deleted already')
+            return tasksActions.removeTaskFailed(
+              'Seems like it was deleted already'
+            )
           }
         }),
-        catchError((error) => console.error(error))
+        catchError((error) => tasksActions.removeTaskFailed(error.message))
       )
     })
   )

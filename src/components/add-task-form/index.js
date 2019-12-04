@@ -14,7 +14,7 @@ const AddTaskForm = ({parentId, dispatch}) => {
   const resetTextarea = () => setTextareaValue('')
 
   const addNewTask = (task) => {
-    dispatch(tasksActions.asyncAddTask(task))
+    dispatch(tasksActions.addTask(task))
   }
 
   const handleSubmitForm = (event) => {
