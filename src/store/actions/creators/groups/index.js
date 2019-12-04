@@ -1,30 +1,24 @@
 import types from '../../types'
 
-/* Action creator for add group to store */
-export const addGroup = (payload) => ({
+/* Add group action creators */
+
+export const addGroup = (newGroup) => ({
   type: types.ADD_GROUP,
-  payload,
+  payload: newGroup,
 })
 
-/* Async action creator for add group on api
-and then returned value set to store */
-export const asyncAddGroup = (payload) => {
-  return (dispatch) => {
-    fetch('http://localhost:4000/group/add', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => response.json())
-      .then((data) => dispatch(addGroup(data)))
-      .catch((error) => console.error(error))
-  }
-}
+export const addGroupFulfilled = (group) => ({
+  type: types.ADD_GROUP_FULFILLED,
+  payload: group,
+})
 
-/* Action creator for set groups to store */
+export const addGroupFailed = (message) => ({
+  type: types.ADD_GROUP_FAILED,
+  payload: message,
+})
+
+/* Set list of groups action creators*/
+
 export const setGroups = (payload) => ({
   type: types.SET_GROUPS,
   payload,

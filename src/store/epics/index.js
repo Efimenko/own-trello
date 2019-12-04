@@ -1,8 +1,10 @@
 import {combineEpics} from 'redux-observable'
-import taskEpics from './tasks'
+import tasksEpics from './tasks'
+import groupsEpics from './groups'
 
 const epics = {
-  taskEpics,
+  tasksEpics,
+  groupsEpics,
 }
 
 const rootEpic = combineEpics(...Object.values(epics))

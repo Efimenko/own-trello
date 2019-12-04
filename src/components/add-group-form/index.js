@@ -15,8 +15,8 @@ const AddGroupForm = ({dispatch}) => {
   const showFormForCreationNewGroup = () =>
     setIsShownFormForCreationNewGroup(true)
 
-  const addNewGroup = (payload) => {
-    dispatch(groupsActions.asyncAddGroup(payload))
+  const addNewGroup = (newGroup) => {
+    dispatch(groupsActions.addGroup(newGroup))
   }
 
   const handleSubmitNewGroupForm = (event) => {

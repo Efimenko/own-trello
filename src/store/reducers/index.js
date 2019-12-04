@@ -29,7 +29,7 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         dataReady: true,
       }
-    case types.ADD_GROUP:
+    case types.ADD_GROUP_FULFILLED:
       return {
         ...state,
         groups: [...state.groups, payload],
