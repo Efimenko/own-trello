@@ -39,7 +39,7 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         tasks: [...state.tasks, payload],
       }
-    case types.REMOVE_TASK:
+    case types.REMOVE_TASK_FULFILLED:
       return {
         ...state,
         tasks: state.tasks.filter((task) => task._id !== payload),

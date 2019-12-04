@@ -9,7 +9,7 @@ const TaskList = ({tasks, dispatch}) => {
   if (!tasks.length) return null
 
   const handleRemoveTask = (taskId) => () => {
-    dispatch(tasksActions.asyncRemoveTask(taskId))
+    dispatch(tasksActions.removeTask(taskId))
   }
 
   return (

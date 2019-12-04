@@ -35,6 +35,11 @@ export const removeTask = (taskId) => ({
   payload: taskId,
 })
 
+export const removeTaskFulfilled = (taskId) => ({
+  type: types.REMOVE_TASK_FULFILLED,
+  payload: taskId,
+})
+
 export const asyncRemoveTask = (taskId) => {
   return (dispatch) => {
     fetch(`http://localhost:4000/task/remove/${taskId}`, {
