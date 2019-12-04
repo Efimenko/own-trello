@@ -1,0 +1,5 @@
+export default {
+  INIT: 'INIT',
+  SET_DATA_READY: 'SET_DATA_READY',
+  SET_INIT_DATA: 'SET_INIT_DATA',
+}
