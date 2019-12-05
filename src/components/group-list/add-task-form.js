@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {tasksActions} from '../../store/actions/creators'
+import {tasksActions} from 'store/actions/creators'
 
 const AddTaskFormView = ({parentId, dispatch}) => {
   const [inputValue, setInputValue] = useState('')

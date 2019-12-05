@@ -11,6 +11,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "alias": {
+    "store": "./src/store",
+    "utils": "./src/utils"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.6.3",
