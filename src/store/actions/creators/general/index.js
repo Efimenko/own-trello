@@ -1,4 +1,4 @@
-import types from '../../types'
+import {types} from '../../types'
 
 const dataReady = () => ({
   type: types.SET_DATA_READY,
