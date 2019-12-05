@@ -2,7 +2,7 @@ import {ofType} from 'redux-observable'
 import {mergeMap, map, catchError} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
-import types from '../../actions/types'
+import {types} from '../../actions/types'
 import {groupsActions} from '../../actions/creators'
 
 export const addGroupEpic = (action$) => {

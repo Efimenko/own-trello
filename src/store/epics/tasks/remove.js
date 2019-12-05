@@ -2,7 +2,7 @@ import {ajax} from 'rxjs/ajax'
 import {map, catchError, mergeMap} from 'rxjs/operators'
 import {ofType} from 'redux-observable'
 
-import types from '../../actions/types'
+import {types} from '../../actions/types'
 import {tasksActions} from '../../actions/creators'
 
 export const removeTaskEpic = (action$) => {
