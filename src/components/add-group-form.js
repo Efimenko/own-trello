@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import {groupsActions} from '../store/actions/creators'
 
-import {groupsActions} from '../../store/actions/creators'
-
-const AddGroupForm = ({dispatch}) => {
+const AddGroupFormView = ({dispatch}) => {
   const [newGroupInputValue, setNewGroupInputValue] = useState('')
   const handleChangeNewGroupInputValue = (value) => setNewGroupInputValue(value)
 
@@ -44,8 +43,8 @@ const AddGroupForm = ({dispatch}) => {
   )
 }
 
-AddGroupForm.propTypes = {
+AddGroupFormView.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-export default connect()(AddGroupForm)
+export const AddGroupForm = connect()(AddGroupFormView)

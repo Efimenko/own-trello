@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import {tasksActions} from '../../store/actions/creators'
 
-const AddTaskForm = ({parentId, dispatch}) => {
+const AddTaskFormView = ({parentId, dispatch}) => {
   const [inputValue, setInputValue] = useState('')
   const [textareaValue, setTextareaValue] = useState('')
 
@@ -52,9 +52,9 @@ const AddTaskForm = ({parentId, dispatch}) => {
   )
 }
 
-AddTaskForm.propTypes = {
+AddTaskFormView.propTypes = {
   parentId: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
 
-export default connect()(AddTaskForm)
+export const AddTaskForm = connect()(AddTaskFormView)

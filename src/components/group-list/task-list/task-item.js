@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
-import EditTaskForm from '../edit-task-form'
+import {EditTaskForm} from './edit-task-form'
 
-const TaskItem = ({task, handleRemoveTask}) => {
+export const TaskItem = ({task, handleRemoveTask}) => {
   const [editFormVisible, setEditFormVisible] = useState(false)
   const handleOpenEditTaskForm = () => setEditFormVisible(true)
   const handleCloseEditTaskForm = () => setEditFormVisible(false)
@@ -31,5 +31,3 @@ TaskItem.propTypes = {
   task: PropTypes.object.isRequired,
   handleRemoveTask: PropTypes.func.isRequired,
 }
-
-export default TaskItem

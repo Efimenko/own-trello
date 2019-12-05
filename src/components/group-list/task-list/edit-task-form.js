@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import {tasksActions} from '../../../store/actions/creators/index'
 
-import {tasksActions} from '../../store/actions/creators'
-
-const EditTaskForm = ({
+const EditTaskFormView = ({
   task,
   task: {title, description},
   onClose,
@@ -81,7 +80,7 @@ const EditTaskForm = ({
   )
 }
 
-EditTaskForm.propTypes = {
+EditTaskFormView.propTypes = {
   task: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -90,4 +89,4 @@ EditTaskForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-export default connect()(EditTaskForm)
+export const EditTaskForm = connect()(EditTaskFormView)

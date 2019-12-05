@@ -1,11 +1,7 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
 
-import AddTaskForm from '../add-task-form'
-import TaskList from '../task-list'
-
-const getTasksByParentId = ({parentId, tasks}) =>
-  tasks.filter((task) => task.parent === parentId)
+import {GroupItem} from './group-item'
 
 const GroupList = ({groups, tasks}) => {
   if (!groups.length) return null
@@ -13,11 +9,7 @@ const GroupList = ({groups, tasks}) => {
   return (
     <div>
       {groups.map(({_id, title}) => (
-        <section key={_id}>
-          <h2>{title}</h2>
-          <AddTaskForm parentId={_id} />
-          <TaskList tasks={getTasksByParentId({parentId: _id, tasks})} />
-        </section>
+        <GroupItem key={_id} id={_id} title={title} tasks={tasks} />
       ))}
     </div>
   )

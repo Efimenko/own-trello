@@ -2,10 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import TaskItem from '../task-item'
-import {tasksActions} from '../../store/actions/creators'
+import {TaskItem} from './task-item'
+import {tasksActions} from '../../../store/actions/creators/index'
 
-const TaskList = ({tasks, dispatch}) => {
+const TaskListView = ({tasks, dispatch}) => {
   if (!tasks.length) return null
 
   const handleRemoveTask = (taskId) => () => {
@@ -23,9 +23,9 @@ const TaskList = ({tasks, dispatch}) => {
   )
 }
 
-TaskList.propTypes = {
+TaskListView.propTypes = {
   tasks: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
 
-export default connect()(TaskList)
+export const TaskList = connect()(TaskListView)
