@@ -3,18 +3,24 @@ import PropTypes from 'prop-types'
 import {or, explicitNull} from 'airbnb-prop-types'
 import {connect} from 'react-redux'
 
-import {generalActions} from './store/actions/creators'
+import {initDataActions} from './store/actions/creators'
 import {GroupList, AddGroupForm} from './components'
 import './style.css'
 
-const App = ({tasks, groups, dataReady, dispatch}) => {
+const App = ({tasks, groups, dispatch}) => {
   const fetchDataInitiated = useRef(false)
-  if (!dataReady && !fetchDataInitiated.current) {
-    dispatch(generalActions.init())
+  const dataFetched = useRef(tasks && groups)
+
+  if (!fetchDataInitiated.current) {
+    dispatch(initDataActions.getInitData())
     fetchDataInitiated.current = true
   }
 
-  return !dataReady ? (
+  if (!dataFetched.current && tasks && groups) {
+    dataFetched.current = true
+  }
+
+  return fetchDataInitiated.current && !dataFetched.current ? (
     'Loading...'
   ) : (
     <Fragment>
@@ -27,7 +33,6 @@ const App = ({tasks, groups, dataReady, dispatch}) => {
 App.propTypes = {
   tasks: or([explicitNull, PropTypes.array]).isRequired,
   groups: or([explicitNull, PropTypes.array]).isRequired,
-  dataReady: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
 
@@ -36,10 +41,9 @@ App.defaultProps = {
   groups: null,
 }
 
-const mapStateToProps = ({tasks, groups, dataReady}) => ({
+const mapStateToProps = ({tasks, groups}) => ({
   tasks,
   groups,
-  dataReady,
 })
 
 export default connect(mapStateToProps)(App)

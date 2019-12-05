@@ -5,6 +5,4 @@ const groupsEpicsHash = {
   addGroupEpic,
 }
 
-const groupsEpics = combineEpics(...Object.values(groupsEpicsHash))
-
-export default groupsEpics
+export const groupsEpics = combineEpics(...Object.values(groupsEpicsHash))

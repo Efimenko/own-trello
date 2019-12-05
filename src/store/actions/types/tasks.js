@@ -1,4 +1,4 @@
-export default {
+export const tasksTypes = {
   ADD_TASK: 'ADD_TASK',
   ADD_TASK_FULFILLED: 'ADD_TASK_FULFILLED',
   ADD_TASK_FAILED: 'ADD_TASK_FAILED',

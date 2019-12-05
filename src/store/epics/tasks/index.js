@@ -7,6 +7,4 @@ const tasksEpicsHash = {
   addTaskEpic,
 }
 
-const tasksEpics = combineEpics(...Object.values(tasksEpicsHash))
-
-export default tasksEpics
+export const tasksEpics = combineEpics(...Object.values(tasksEpicsHash))

@@ -1,4 +1,4 @@
-export default {
+export const groupsTypes = {
   ADD_GROUP: 'ADD_GROUP',
   ADD_GROUP_FULFILLED: 'ADD_GROUP_FULFILLED',
   ADD_GROUP_FAILED: 'ADD_GROUP_FAILED',
