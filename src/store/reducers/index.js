@@ -11,7 +11,6 @@ export default (state = defaultState, {type, payload}) => {
       return {
         ...state,
         ...payload,
-        dataReady: true,
       }
     case types.ADD_GROUP_FULFILLED:
       return {

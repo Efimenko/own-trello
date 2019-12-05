@@ -16,10 +16,3 @@ export const addGroupFailed = (message) => ({
   type: types.ADD_GROUP_FAILED,
   payload: message,
 })
-
-/* Set list of groups action creators*/
-
-export const setGroups = (payload) => ({
-  type: types.SET_GROUPS,
-  payload,
-})

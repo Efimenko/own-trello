@@ -17,13 +17,6 @@ export const addTaskFailed = (message) => ({
   payload: message,
 })
 
-/* Set list of task action creator */
-
-export const setTasks = (tasks) => ({
-  type: types.SET_TASKS,
-  payload: tasks,
-})
-
 /* Remove task action creators */
 
 export const removeTask = (taskId) => ({
