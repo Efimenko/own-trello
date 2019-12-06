@@ -5,7 +5,7 @@ import {tasksActions} from 'store/actions/creators/index'
 
 const EditTaskFormView = ({
   task,
-  task: {title, description},
+  task: {_id, title, description},
   onClose,
   dispatch,
 }) => {
@@ -38,17 +38,18 @@ const EditTaskFormView = ({
     updateCanSave({key: 'description', value})
   }
 
-  const addNewTask = (task) => {
-    dispatch(tasksActions.asyncAddTask(task))
+  const updateTask = ({taskId, title, description}) => {
+    dispatch(tasksActions.updateTask({taskId, data: {title, description}}))
   }
 
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    // addNewTask({
-    //   title: inputValue,
-    //   description: textareaValue,
-    //   parent: parentId,
-    // })
+    updateTask({
+      taskId: _id,
+      title: inputValue,
+      description: textareaValue,
+    })
+    onClose()
   }
   return (
     <form onSubmit={handleSubmitForm}>
@@ -82,6 +83,7 @@ const EditTaskFormView = ({
 
 EditTaskFormView.propTypes = {
   task: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,

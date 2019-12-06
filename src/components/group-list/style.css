@@ -1,0 +1,13 @@
+.group-list {
+  white-space: nowrap;
+  overflow: auto;
+  height: 100vh;
+  margin: 0;
+  padding-left: 0;
+}
+
+.group-column {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}

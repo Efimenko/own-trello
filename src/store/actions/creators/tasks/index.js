@@ -33,3 +33,20 @@ export const removeTaskFailed = (message) => ({
   type: types.REMOVE_TASK_FAILED,
   payload: message,
 })
+
+/* Edit task action creators */
+
+export const updateTask = ({taskId, data: {title, description}}) => ({
+  type: types.UPDATE_TASK,
+  payload: {taskId, data: {title, description}},
+})
+
+export const updateTaskFulfilled = ({_id, title, description}) => ({
+  type: types.UPDATE_TASK_FULFILLED,
+  payload: {_id, title, description},
+})
+
+export const updateTaskFailed = ({message}) => ({
+  type: types.UPDATE_TASK_FAILED,
+  payload: message,
+})

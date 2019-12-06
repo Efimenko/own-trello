@@ -47,6 +47,7 @@ const AddTaskFormView = ({parentId, dispatch}) => {
         id="task-description-input"
         required
       ></textarea>
+      <br />
       <button type="submit">Add task</button>
     </form>
   )

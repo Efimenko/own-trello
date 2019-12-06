@@ -27,6 +27,16 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         tasks: state.tasks.filter((task) => task._id !== payload),
       }
+    case types.UPDATE_TASK_FULFILLED:
+      return {
+        ...state,
+        tasks: state.tasks.map((task) => {
+          if (task._id === payload._id) {
+            return {...payload}
+          }
+          return task
+        }),
+      }
     default:
       return state
   }

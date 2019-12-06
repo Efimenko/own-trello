@@ -4,7 +4,7 @@ import {or, explicitNull} from 'airbnb-prop-types'
 import {connect} from 'react-redux'
 
 import {initDataActions} from './store/actions/creators'
-import {GroupList, AddGroupForm} from './components'
+import {GroupList} from './components'
 import './style.css'
 
 const App = ({tasks, groups, dispatch}) => {
@@ -25,7 +25,6 @@ const App = ({tasks, groups, dispatch}) => {
   ) : (
     <Fragment>
       <GroupList tasks={tasks} groups={groups} />
-      <AddGroupForm />
     </Fragment>
   )
 }

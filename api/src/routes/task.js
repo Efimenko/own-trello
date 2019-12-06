@@ -32,10 +32,18 @@ router.post('/task/add', (req, res) => {
     })
 })
 
+/* Edit task */
+router.post('/task/update/:id', (req, res) => {
+  const {title, description} = req.body
+  TaskSchema.updateOne({_id: req.params.id}, {$set: {title, description}})
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
 /* Delete task by id */
 router.delete('/task/remove/:id', (req, res) => {
   TaskSchema.deleteOne({_id: req.params.id})
-    .then((data) => res.json(data))
+    .then((data) => res.status(200).json(data))
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 

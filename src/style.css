@@ -1,7 +1,13 @@
-label {
-  cursor: pointer;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.some-class {
-  color: red;
+body {
+  margin: 0;
+}
+
+label {
+  cursor: pointer;
 }

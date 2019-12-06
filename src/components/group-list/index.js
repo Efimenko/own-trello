@@ -2,16 +2,21 @@ import React from 'react'
 import {PropTypes} from 'prop-types'
 
 import {GroupItem} from './group-item'
+import css from './style.css'
+import {AddGroupForm} from './add-group-form'
 
 const GroupList = ({groups, tasks}) => {
-  if (!groups.length) return null
-
   return (
-    <div>
+    <ul className={css['group-list']}>
       {groups.map(({_id, title}) => (
-        <GroupItem key={_id} id={_id} title={title} tasks={tasks} />
+        <li className={css['group-column']} key={_id}>
+          <GroupItem id={_id} title={title} tasks={tasks} />
+        </li>
       ))}
-    </div>
+      <li className={css['group-column']} key="add-group-form">
+        <AddGroupForm />
+      </li>
+    </ul>
   )
 }
 
