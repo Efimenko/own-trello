@@ -6,7 +6,9 @@
       "baseUrl": "./",
       "paths": {
         "store/*": ["src/store/*"],
-        "utils/*": ["src/utils/*"]
+        "utils/*": ["src/utils/*"],
+        "components/*": ["src/components/*"],
+        "pages/*": ["src/pages/*"]
       }
   }
 }
