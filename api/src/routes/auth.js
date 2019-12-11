@@ -6,7 +6,7 @@ const UserSchema = require('../models/user.model')
 
 const router = express.Router()
 
-router.post('/login', (req, res) => {
+router.post('/user/login', (req, res) => {
   const hashedPassword = crypto
     .createHash('md5')
     .update(process.env.SECRET_KEY + ':' + req.body.password)
@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
     .catch((err) => res.status(400).json(err))
 })
 
-router.post('/register', (req, res) => {
+router.post('/user/register', (req, res) => {
   const hashedPassword = crypto
     .createHash('md5')
     .update(process.env.SECRET_KEY + ':' + req.body.password)
