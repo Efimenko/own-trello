@@ -1,11 +1,12 @@
 const express = require('express')
 const TaskSchema = require('../models/task.model')
 const logger = require('../logger')
+const verifyToken = require('./verifyToken')
 
 const router = express.Router()
 
 /* List of tasks */
-router.get('/tasks', (req, res) => {
+router.get('/tasks', verifyToken, (req, res) => {
   TaskSchema.find()
     .then((tasks) => res.json(tasks))
     .catch((err) => res.status(400).json('Error: ' + err))

@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
