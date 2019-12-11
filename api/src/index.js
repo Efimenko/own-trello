@@ -1,9 +1,9 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
+const authRouter = require('./routes/auth')
 const logger = require('./logger')
 
 mongoose.connect('mongodb://localhost:27017/trello', {
@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/trello', {
 /* Initiate express app */
 const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:1234')
@@ -30,6 +30,7 @@ app.use((req, res, next) => {
 
 app.use(taskRouter)
 app.use(groupRouter)
+app.use(authRouter)
 
 /* Return 404 status when there is not some route */
 app.use((req, res) => {
