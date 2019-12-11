@@ -12,15 +12,15 @@ router.get('/tasks', verifyToken, (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
-/* Get tasks by id */
-router.get('/task/:id', (req, res) => {
+/* Get task by id */
+router.get('/task/:id', verifyToken, (req, res) => {
   TaskSchema.findById({_id: req.params.id})
     .then((task) => res.json(task))
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 /* Create new task */
-router.post('/task/add', (req, res) => {
+router.post('/task/add', verifyToken, (req, res) => {
   const task = new TaskSchema(req.body)
   task
     .save()
@@ -34,7 +34,7 @@ router.post('/task/add', (req, res) => {
 })
 
 /* Edit task */
-router.post('/task/update/:id', (req, res) => {
+router.post('/task/update/:id', verifyToken, (req, res) => {
   const {title, description} = req.body
   TaskSchema.updateOne({_id: req.params.id}, {$set: {title, description}})
     .then((data) => res.status(200).json(data))
@@ -42,7 +42,7 @@ router.post('/task/update/:id', (req, res) => {
 })
 
 /* Delete task by id */
-router.delete('/task/remove/:id', (req, res) => {
+router.delete('/task/remove/:id', verifyToken, (req, res) => {
   TaskSchema.deleteOne({_id: req.params.id})
     .then((data) => res.status(200).json(data))
     .catch((err) => res.status(400).json('Error: ' + err))

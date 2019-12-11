@@ -1,17 +1,19 @@
 const express = require('express')
+
 const GroupSchema = require('../models/group.model')
+const verifyToken = require('./verifyToken')
 
 const router = express.Router()
 
 /* List of groups */
-router.get('/groups', (req, res) => {
+router.get('/groups', verifyToken, (req, res) => {
   GroupSchema.find()
     .then((groups) => res.json(groups))
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 /* Create new group */
-router.post('/group/add', (req, res) => {
+router.post('/group/add', verifyToken, (req, res) => {
   const group = new GroupSchema(req.body)
   group
     .save()
