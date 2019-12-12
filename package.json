@@ -13,7 +13,7 @@
   "license": "ISC",
   "alias": {
     "store": "./src/store",
-    "utils": "./src/utils",
+    "shared": "./shared",
     "components": "./src/components",
     "pages": "./src/pages"
   },
@@ -39,6 +39,7 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "redux-observable": "^1.2.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "shared": "^0.2.0"
   }
 }

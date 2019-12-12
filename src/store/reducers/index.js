@@ -7,6 +7,11 @@ const defaultState = {
 
 export default (state = defaultState, {type, payload}) => {
   switch (type) {
+    case types.REGISTER_USER_FULFILLED:
+      return {
+        ...state,
+        user: payload,
+      }
     case types.INIT_DATA_FULFILLED:
       return {
         ...state,

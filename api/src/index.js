@@ -7,10 +7,15 @@ const groupRouter = require('./routes/group')
 const authRouter = require('./routes/auth')
 const logger = require('./logger')
 
-mongoose.connect('mongodb://localhost:27017/trello', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(
+  'mongodb://localhost:27017/trello',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+  () => logger.info('Connected to MongoDB')
+)
 
 /* Initiate express app */
 const app = express()
@@ -19,8 +24,12 @@ app.use(express.json())
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:1234')
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Accept, Authorization'
+  )
   res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE')
+  res.header('Access-Control-Expose-Headers', '*')
   next()
 })
 

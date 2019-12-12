@@ -1,11 +1,31 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {PropTypes} from 'prop-types'
+import {useHistory} from 'react-router-dom'
 
-export const SignUpForm = () => {
+import {authActions} from 'store/actions/creators'
+
+export const SignUpFormView = ({dispatch}) => {
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
+
+  const handleSubmitForm = (event) => {
+    event.preventDefault()
+    setLoading(true)
+    dispatch(
+      authActions.registerUser({
+        name: nameValue,
+        email: emailValue,
+        password: passwordValue,
+        history,
+      })
+    )
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmitForm}>
       <label htmlFor="sign-up-name">Name</label>
       <br />
       <input
@@ -41,6 +61,15 @@ export const SignUpForm = () => {
         id="sign-up-password"
         required
       />
+      <button type="submit" disabled={loading}>
+        Register
+      </button>
     </form>
   )
 }
+
+SignUpFormView.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+}
+
+export const SignUpForm = connect()(SignUpFormView)

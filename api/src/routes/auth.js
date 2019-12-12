@@ -3,6 +3,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 
 const UserSchema = require('../models/user.model')
+const {omit} = require('../utils')
 
 const router = express.Router()
 
@@ -36,7 +37,7 @@ router.post('/user/register', (req, res) => {
     .then((newUser) => {
       const token = jwt.sign({_id: newUser._id}, process.env.SECRET_KEY)
       res.header('Authorization', `Bearer ${token}`)
-      res.status(200)
+      res.status(200).send(omit(['password'])(newUser))
     })
     .catch((err) => {
       res.status(500).json(err)
