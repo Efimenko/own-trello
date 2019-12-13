@@ -5,6 +5,7 @@ import {ajax} from 'rxjs/ajax'
 
 import {initDataActions} from '../../actions/creators'
 import {types} from '../../actions/types'
+import {getAuthHeaderFromLocalStorage} from '../utils'
 
 export const getInitDataEpic = ($action) => {
   return $action.pipe(
@@ -13,9 +14,15 @@ export const getInitDataEpic = ($action) => {
       forkJoin({
         tasks: ajax({
           url: 'http://localhost:4000/tasks',
+          headers: {
+            Authorization: getAuthHeaderFromLocalStorage(),
+          },
         }),
         groups: ajax({
           url: 'http://localhost:4000/groups',
+          headers: {
+            Authorization: getAuthHeaderFromLocalStorage(),
+          },
         }),
       }).pipe(
         map(({tasks: {response: tasks}, groups: {response: groups}}) => {

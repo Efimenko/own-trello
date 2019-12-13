@@ -4,6 +4,7 @@ import {ofType} from 'redux-observable'
 
 import {types} from '../../actions/types'
 import {tasksActions} from '../../actions/creators'
+import {getAuthHeaderFromLocalStorage} from '../utils'
 
 export const removeTaskEpic = (action$) => {
   return action$.pipe(
@@ -12,6 +13,9 @@ export const removeTaskEpic = (action$) => {
       return ajax({
         url: `http://localhost:4000/task/remove/${payload}`,
         method: 'DELETE',
+        headers: {
+          Authorization: getAuthHeaderFromLocalStorage(),
+        },
       }).pipe(
         map(({response}) => {
           if (response.ok && response.deletedCount) {

@@ -2,9 +2,9 @@ import {types} from '../../types'
 
 /* Add group action creators */
 
-export const addGroup = (newGroup) => ({
+export const addGroup = ({title}) => ({
   type: types.ADD_GROUP,
-  payload: newGroup,
+  payload: {title},
 })
 
 export const addGroupFulfilled = (group) => ({

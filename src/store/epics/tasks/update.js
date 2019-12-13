@@ -3,6 +3,7 @@ import {types} from '../../actions/types/index'
 import {switchMap, map, catchError} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 import {tasksActions} from '../../actions/creators/index'
+import {getAuthHeaderFromLocalStorage} from '../utils'
 
 export const updateTaskEpic = (action$) => {
   return action$.pipe(
@@ -14,6 +15,7 @@ export const updateTaskEpic = (action$) => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          Authorization: getAuthHeaderFromLocalStorage(),
         },
         body: JSON.stringify(data),
       }).pipe(

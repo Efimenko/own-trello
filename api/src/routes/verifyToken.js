@@ -6,6 +6,8 @@ const verifyToken = (req, res, next) => {
   if (!authHeader || !token) return res.status(401).send('Unauthorized')
   try {
     jwt.verify(token, process.env.SECRET_KEY)
+    const {_id} = jwt.decode(token)
+    req.userId = _id
     next()
   } catch (error) {
     return res.status(401).send(error)

@@ -4,6 +4,7 @@ import {ofType} from 'redux-observable'
 
 import {types} from '../../actions/types'
 import {tasksActions} from '../../actions/creators'
+import {getAuthHeaderFromLocalStorage} from '../utils'
 
 export const addTaskEpic = (action$) => {
   return action$.pipe(
@@ -15,6 +16,7 @@ export const addTaskEpic = (action$) => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          Authorization: getAuthHeaderFromLocalStorage(),
         },
         body: JSON.stringify(payload),
       }).pipe(

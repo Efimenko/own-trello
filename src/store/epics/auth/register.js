@@ -4,7 +4,7 @@ import {ajax} from 'rxjs/ajax'
 
 import {types} from 'store/actions/types'
 import {authActions} from 'store/actions/creators'
-import {setAuthHeaderToLocalStorage} from './utils'
+import {setAuthHeaderToLocalStorage} from '../utils'
 
 export const registerUserEpic = (action$) => {
   return action$.pipe(
