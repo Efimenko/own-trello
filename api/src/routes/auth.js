@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const UserSchema = require('../models/user.model')
 const {omit} = require('../utils')
+const logger = require('../logger')
 
 const router = express.Router()
 
@@ -18,7 +19,21 @@ router.post('/user/login', (req, res) => {
       if (user) {
         const token = jwt.sign({_id: user._id}, process.env.SECRET_KEY)
         res.header('Authorization', `Bearer ${token}`)
-        res.sendStatus(200)
+        res.status(200).send(omit(['password'])(user))
+      } else {
+        res.status(401).send('Unauthorized')
+      }
+    })
+    .catch((err) => res.status(400).json(err))
+})
+
+router.post('/user/loginbytoken', (req, res) => {
+  const {_id} = jwt.decode(req.body.token)
+
+  UserSchema.findOne({_id})
+    .then((user) => {
+      if (user) {
+        res.status(200).send(omit(['password'])(user))
       } else {
         res.status(401).send('Unauthorized')
       }

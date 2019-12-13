@@ -1,10 +1,34 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {PropTypes} from 'prop-types'
+import {useHistory} from 'react-router-dom'
 
-export const SignInForm = () => {
+import {authActions} from 'store/actions/creators'
+import {or, explicitNull} from 'airbnb-prop-types'
+
+const SignInFormView = ({user, dispatch}) => {
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
+
+  const handleSubmitForm = (event) => {
+    event.preventDefault()
+    setLoading(true)
+    dispatch(
+      authActions.loginUser({
+        email: emailValue,
+        password: passwordValue,
+      })
+    )
+  }
+
+  if (user) {
+    history.push('/')
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmitForm}>
       <label htmlFor="sing-in-email">Email</label>
       <br />
       <input
@@ -28,6 +52,20 @@ export const SignInForm = () => {
         id="sign-in-password"
         required
       />
+      <button type="submit" disabled={loading}>
+        Login
+      </button>
     </form>
   )
 }
+
+SignInFormView.propTypes = {
+  user: or([explicitNull, PropTypes.object]).isRequired,
+  dispatch: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = ({user}) => ({
+  user,
+})
+
+export const SignInForm = connect(mapStateToProps)(SignInFormView)

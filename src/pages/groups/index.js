@@ -20,7 +20,7 @@ const GroupsPageView = ({tasks, groups, dispatch}) => {
   }
 
   return fetchDataInitiated.current && !dataFetched.current ? (
-    'Loading...'
+    'Loading groups...'
   ) : (
     <GroupList tasks={tasks} groups={groups} />
   )

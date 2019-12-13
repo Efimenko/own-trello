@@ -8,7 +8,9 @@
     "console": true,
     "require": true,
     "process": true,
-    "module": true
+    "module": true,
+    "exports": true,
+    "Buffer": true
   },
   "rules": {
     "no-var": "error",

@@ -4,8 +4,9 @@ import {PropTypes} from 'prop-types'
 import {useHistory} from 'react-router-dom'
 
 import {authActions} from 'store/actions/creators'
+import {or, explicitNull} from 'airbnb-prop-types'
 
-export const SignUpFormView = ({dispatch}) => {
+export const SignUpFormView = ({user, dispatch}) => {
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
@@ -24,6 +25,11 @@ export const SignUpFormView = ({dispatch}) => {
       })
     )
   }
+
+  if (user) {
+    history.push('/')
+  }
+
   return (
     <form onSubmit={handleSubmitForm}>
       <label htmlFor="sign-up-name">Name</label>
@@ -69,7 +75,12 @@ export const SignUpFormView = ({dispatch}) => {
 }
 
 SignUpFormView.propTypes = {
+  user: or([explicitNull, PropTypes.object]).isRequired,
   dispatch: PropTypes.func.isRequired,
 }
 
-export const SignUpForm = connect()(SignUpFormView)
+const mapStateToProps = ({user}) => ({
+  user,
+})
+
+export const SignUpForm = connect(mapStateToProps)(SignUpFormView)

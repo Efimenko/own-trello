@@ -5,7 +5,7 @@ require('dotenv').config()
 const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
 const authRouter = require('./routes/auth')
-const logger = require('./logger')
+const {logger, reqResLogger} = require('./logger')
 
 mongoose.connect(
   'mongodb://localhost:27017/trello',
@@ -33,10 +33,7 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.use((req, res, next) => {
-  logger.info(`Request: ${req.originalUrl} Body: ${JSON.stringify(req.body)}`)
-  next()
-})
+app.use(reqResLogger)
 
 app.use(taskRouter)
 app.use(groupRouter)

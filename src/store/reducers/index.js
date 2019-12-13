@@ -1,6 +1,7 @@
 import {types} from '../actions/types'
 
 const defaultState = {
+  user: null,
   groups: null,
   tasks: null,
 }
@@ -8,6 +9,11 @@ const defaultState = {
 export default (state = defaultState, {type, payload}) => {
   switch (type) {
     case types.REGISTER_USER_FULFILLED:
+      return {
+        ...state,
+        user: payload,
+      }
+    case types.LOGIN_USER_FULFILLED:
       return {
         ...state,
         user: payload,

@@ -12,7 +12,7 @@
     "fetch": true,
     "Promise": true,
     "window": true,
-    "localStorage": true,
+    "localStorage": true
   },
   "rules": {
     "no-var": "error",

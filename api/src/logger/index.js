@@ -1,10 +1,5 @@
-const bunyan = require('bunyan')
+const {logger} = require('./config')
+const {reqResLogger} = require('./req-res-logger')
 
-const conf = {
-  name: 'trello-parcel',
-  streams: [{stream: process.stdout, level: 'info'}],
-  serializers: {req: bunyan.stdSerializers.req, res: bunyan.stdSerializers.res},
-}
-const logger = bunyan.createLogger(conf)
-
-module.exports = logger
+exports.logger = logger
+exports.reqResLogger = reqResLogger
