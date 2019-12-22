@@ -10,7 +10,13 @@
     "process": true,
     "module": true,
     "exports": true,
-    "Buffer": true
+    "Buffer": true,
+    "beforeAll": true,
+    "afterEach": true,
+    "afterAll": true,
+    "describe": true,
+    "it": true,
+    "expect": true
   },
   "rules": {
     "no-var": "error",

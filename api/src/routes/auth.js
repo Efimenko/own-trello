@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken')
 
 const UserSchema = require('../models/user.model')
 const {omit} = require('../utils')
-const logger = require('../logger')
 
 const router = express.Router()
 
