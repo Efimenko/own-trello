@@ -11,7 +11,6 @@ const register = ({name, email, password}) => {
     .digest('hex')
 
   const user = new UserSchema({name, email, password: hashedPassword})
-
   return user
     .save()
     .then((newUser) => {

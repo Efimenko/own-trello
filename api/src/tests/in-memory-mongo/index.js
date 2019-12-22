@@ -6,7 +6,6 @@ const inMemoryMongo = new MongoMemoryServer()
 /* Connect to the in-memory database */
 module.exports.connectToDatabase = async () => {
   const uri = await inMemoryMongo.getConnectionString()
-
   const mongooseOpts = {
     useNewUrlParser: true,
     autoReconnect: true,
