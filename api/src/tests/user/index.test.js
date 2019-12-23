@@ -10,6 +10,9 @@ afterEach(async () => await clearDatabase())
 afterAll(async () => await closeConnectionToDatabase())
 
 describe('Auth service', () => {
+  it('Should has SECRET_KEY in enviroment variables', () => {
+    expect(process.env.SECRET_KEY).not.toBeUndefined()
+  })
   it('Should register user', async (done) => {
     const dataForUser = {
       name: 'some name',
