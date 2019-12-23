@@ -2,7 +2,7 @@ const {
   connectToDatabase,
   closeConnectionToDatabase,
   clearDatabase,
-} = require('../../in-memory-mongo')
+} = require('../../utils/in-memory-mongo')
 const {auth} = require('../../../services/auth')
 
 beforeAll(async () => await connectToDatabase())
@@ -14,7 +14,7 @@ describe('Auth service', () => {
     expect(process.env.SECRET_KEY).not.toBeUndefined()
   })
 
-  it('Should register user', async (done) => {
+  it('Should register user', async () => {
     const userData = {
       name: 'some name',
       email: 'someeemail@gmail.com',
@@ -26,10 +26,9 @@ describe('Auth service', () => {
     expect(data).toHaveProperty('_id')
     expect(data).toHaveProperty('name')
     expect(data).toHaveProperty('email')
-    done()
   })
 
-  it('Should login user', async (done) => {
+  it('Should login user', async () => {
     const userData = {
       name: 'some name',
       email: 'someeemail@gmail.com',
@@ -45,10 +44,9 @@ describe('Auth service', () => {
     expect(data).toHaveProperty('_id')
     expect(data).toHaveProperty('name')
     expect(data).toHaveProperty('email')
-    done()
   })
 
-  it('Should login user by token', async (done) => {
+  it('Should login user by token', async () => {
     const userData = {
       name: 'some name',
       email: 'someeemail@gmail.com',
@@ -62,6 +60,5 @@ describe('Auth service', () => {
     expect(data).toHaveProperty('_id')
     expect(data).toHaveProperty('name')
     expect(data).toHaveProperty('email')
-    done()
   })
 })
