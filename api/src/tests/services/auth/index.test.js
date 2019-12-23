@@ -2,8 +2,8 @@ const {
   connectToDatabase,
   closeConnectionToDatabase,
   clearDatabase,
-} = require('../in-memory-mongo')
-const {auth} = require('../../services/auth')
+} = require('../../in-memory-mongo')
+const {auth} = require('../../../services/auth')
 
 beforeAll(async () => await connectToDatabase())
 afterEach(async () => await clearDatabase())
