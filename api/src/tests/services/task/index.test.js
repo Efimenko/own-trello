@@ -98,6 +98,15 @@ describe('Task service', () => {
     expect(allTasks.length).toBe(0)
   })
 
+  it('Should catch error when pass invalid data on remove tasks', async () => {
+    const {status, data} = await task.remove({
+      _id: 'Invalid id',
+      userId: 'Invalid id',
+    })
+    expect(status).toBe(500)
+    expect(data.length).not.toBe(0)
+  })
+
   it('Should update task', async () => {
     const userId = await userUtils.createUserAndGetId()
     const groupId = await groupUtils.createGroupAndGetId({userId})
