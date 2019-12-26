@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1577344870833" clover="3.2.0">
+  <project timestamp="1577344870833" name="All files">
+    <metrics statements="150" coveredstatements="132" conditionals="8" coveredconditionals="3" methods="43" coveredmethods="27" elements="201" coveredelements="162" complexity="0" loc="150" ncloc="150" packages="8" files="22" classes="22"/>
+    <package name="models">
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="group.model.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/models/group.model.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+      </file>
+      <file name="task.model.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/models/task.model.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+      <file name="user.model.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/models/user.model.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="services.auth">
+      <metrics statements="40" coveredstatements="35" conditionals="4" coveredconditionals="2" methods="9" coveredmethods="6"/>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/auth/index.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+      </file>
+      <file name="login-by-token.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/auth/login-by-token.js">
+        <metrics statements="11" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+      <file name="login.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/auth/login.js">
+        <metrics statements="13" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+      </file>
+      <file name="register.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/auth/register.js">
+        <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="services.group">
+      <metrics statements="16" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
+      <file name="add.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/group/add.js">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+      <file name="get-all.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/group/get-all.js">
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/group/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="services.task">
+      <metrics statements="37" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="8"/>
+      <file name="add.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/task/add.js">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="get-all.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/task/get-all.js">
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="get-one.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/task/get-one.js">
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/task/index.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+      <file name="remove.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/task/remove.js">
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="update.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/services/task/update.js">
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.utils.group">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="create-group-and-get-id.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/tests/utils/group/create-group-and-get-id.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/tests/utils/group/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.utils.in-memory-mongo">
+      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/tests/utils/in-memory-mongo/index.js">
+        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="11" type="stmt"/>
+        <line num="29" count="11" type="stmt"/>
+        <line num="30" count="23" type="stmt"/>
+        <line num="31" count="23" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.utils.user">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="create-user-and-get-id.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/tests/utils/user/create-user-and-get-id.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/tests/utils/user/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="12" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="8" coveredmethods="4"/>
+      <file name="index.js" path="/Users/bohdan/Documents/projects/own/todo/api/src/utils/index.js">
+        <metrics statements="12" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="8" coveredmethods="4"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="3" count="60" type="stmt"/>
+        <line num="5" count="48" type="stmt"/>
+        <line num="6" count="48" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

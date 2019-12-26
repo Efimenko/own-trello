@@ -56,4 +56,67 @@ describe('Task service', () => {
     expect(Array.isArray(data)).toBe(true)
     expect(data).toHaveLength(2)
   })
+
+  it('Should return one task object when get one task', async () => {
+    const userId = await userUtils.createUserAndGetId()
+    const groupId = await groupUtils.createGroupAndGetId({userId})
+    const taskData = {
+      parent: groupId,
+      title: 'Some task title',
+      description: 'Some task description',
+      userId,
+    }
+    const {
+      data: {_id},
+    } = await task.add(taskData)
+    const {status, data} = await task.getOne({_id, userId})
+    expect(status).toBe(200)
+    expect(Array.isArray(data)).toBe(false)
+    expect(data._id).toEqual(_id)
+    expect(data.title).toBe(taskData.title)
+    expect(data.description).toBe(taskData.description)
+    expect(data.owner).toEqual(userId)
+    expect(data.parent).toEqual(groupId)
+  })
+
+  it('Should remove task', async () => {
+    const userId = await userUtils.createUserAndGetId()
+    const groupId = await groupUtils.createGroupAndGetId({userId})
+    const taskData = {
+      parent: groupId,
+      title: 'Some task title',
+      description: 'Some task description',
+      userId,
+    }
+    const {
+      data: {_id},
+    } = await task.add(taskData)
+    const {status, data} = await task.remove({_id, userId})
+    expect(status).toBe(200)
+    expect(data.deletedCount).toBe(1)
+    const {data: allTasks} = await task.getAll({userId})
+    expect(allTasks.length).toBe(0)
+  })
+
+  it('Should update task', async () => {
+    const userId = await userUtils.createUserAndGetId()
+    const groupId = await groupUtils.createGroupAndGetId({userId})
+    const taskData = {
+      parent: groupId,
+      title: 'Some task title',
+      description: 'Some task description',
+      userId,
+    }
+    const updateData = {
+      title: 'New title',
+      description: 'New description',
+    }
+    const {
+      data: {_id},
+    } = await task.add(taskData)
+    const {status, data} = await task.update({_id, userId, ...updateData})
+    expect(status).toBe(200)
+    expect(data.nModified).toBe(1)
+    expect(data.ok).toBe(1)
+  })
 })
