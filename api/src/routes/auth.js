@@ -1,7 +1,7 @@
 const express = require('express')
 
 const {auth} = require('../services/auth')
-const {validateData} = require('./validate-data')
+const {validateBodyData} = require('./middlewares/validate-body-data')
 const {userValidationSchema} = require('../validator/user')
 
 const router = express.Router()
@@ -25,7 +25,7 @@ router.post('/user/loginbytoken', (req, res) => {
 
 router.post(
   '/user/register',
-  validateData(userValidationSchema.add),
+  validateBodyData(userValidationSchema.add),
   (req, res) => {
     const {name, email, password} = req.body
     auth.register({name, email, password}).then(({status, token, data}) => {

@@ -1,6 +1,6 @@
 const express = require('express')
 
-const verifyToken = require('./verifyToken')
+const verifyToken = require('./middlewares/verify-token')
 const {task} = require('../services/task')
 
 const router = express.Router()
