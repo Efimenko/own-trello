@@ -16,5 +16,8 @@ const pick = (keys) => (collection) => {
     }, {})
 }
 
+const checkType = (value) => Object.prototype.toString.call(value).slice(8, -1)
+
 exports.omit = omit
 exports.pick = pick
+exports.checkType = checkType
