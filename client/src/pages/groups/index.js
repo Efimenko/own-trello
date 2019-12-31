@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {or, explicitNull} from 'airbnb-prop-types'
 
 import GroupList from 'components/group-list/index'
-import {initDataActions} from 'store/actions/creators'
+import {initDataActions, authActions} from 'store/actions/creators'
 
 const GroupsPageView = ({tasks, groups, dispatch}) => {
   const fetchDataInitiated = useRef(false)
@@ -19,10 +19,20 @@ const GroupsPageView = ({tasks, groups, dispatch}) => {
     dataFetched.current = true
   }
 
+  const handleLogOut = () => {
+    localStorage.removeItem('authToken')
+    dispatch(authActions.logOutUser())
+  }
+
   return fetchDataInitiated.current && !dataFetched.current ? (
     'Loading groups...'
   ) : (
-    <GroupList tasks={tasks} groups={groups} />
+    <React.Fragment>
+      <button type="button" onClick={handleLogOut}>
+        Log out
+      </button>
+      <GroupList tasks={tasks} groups={groups} />
+    </React.Fragment>
   )
 }
 

@@ -39,3 +39,7 @@ export const loginUserByTokenFailed = ({message}) => ({
   type: types.LOGIN_USER_FAILED,
   payload: {message},
 })
+
+export const logOutUser = () => ({
+  type: types.LOG_OUT_USER,
+})

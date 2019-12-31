@@ -18,6 +18,11 @@ export default (state = defaultState, {type, payload}) => {
         ...state,
         user: payload,
       }
+    case types.LOG_OUT_USER:
+      return {
+        ...state,
+        user: null,
+      }
     case types.INIT_DATA_FULFILLED:
       return {
         ...state,
