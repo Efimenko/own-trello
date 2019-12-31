@@ -1,4 +1,5 @@
 import {ofType} from 'redux-observable'
+import {of} from 'rxjs'
 import {switchMap, catchError, map} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
@@ -19,19 +20,13 @@ export const registerUserEpic = (action$) => {
         },
         body: JSON.stringify({name, email, password}),
       }).pipe(
-        map(({status, response, xhr}) => {
-          if (status === 200) {
-            const AuthorizationHeader = xhr.getResponseHeader('Authorization')
-            setAuthHeaderToLocalStorage({header: AuthorizationHeader})
-            return authActions.registerUserFulfilled(response)
-          } else {
-            return authActions.registerUserFailed({
-              message: 'Something went wrong',
-            })
-          }
+        map(({response, xhr}) => {
+          const AuthorizationHeader = xhr.getResponseHeader('Authorization')
+          setAuthHeaderToLocalStorage({header: AuthorizationHeader})
+          return authActions.registerUserFulfilled(response)
         }),
-        catchError((err) =>
-          authActions.registerUserFailed({message: err.message})
+        catchError(({response: data}) =>
+          of(authActions.registerUserFailed({errors: data}))
         )
       )
     })

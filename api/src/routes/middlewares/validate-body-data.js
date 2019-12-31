@@ -7,7 +7,7 @@ const validateBodyData = (schema) => (req, res, next) => {
   const {body: data} = req
   const {valid, errors} = validator({schema, data})
   if (!valid) {
-    res.status(400).send(errors)
+    return res.status(400).send(errors)
   } else {
     next()
   }

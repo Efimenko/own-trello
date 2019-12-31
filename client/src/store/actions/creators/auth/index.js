@@ -10,9 +10,9 @@ export const registerUserFulfilled = ({_id, name, email}) => ({
   payload: {_id, name, email},
 })
 
-export const registerUserFailed = ({message}) => ({
+export const registerUserFailed = ({errors}) => ({
   type: types.REGISTER_USER_FAILED,
-  payload: {message},
+  payload: {errors},
 })
 
 export const loginUser = ({email, password}) => ({
