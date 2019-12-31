@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {PropTypes} from 'prop-types'
-import {or, explicitNull} from 'airbnb-prop-types'
 
 import {authActions} from 'store/actions/creators'
 
@@ -52,9 +50,4 @@ export const SignInForm = () => {
       </button>
     </form>
   )
-}
-
-SignInForm.propTypes = {
-  user: or([explicitNull, PropTypes.object]).isRequired,
-  dispatch: PropTypes.func.isRequired,
 }
