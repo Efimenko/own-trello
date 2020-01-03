@@ -10,7 +10,7 @@ import {setAuthHeaderToLocalStorage} from '../utils'
 export const registerUserEpic = (action$) => {
   return action$.pipe(
     ofType(types.REGISTER_USER),
-    switchMap(({payload: {name, email, password}}) => {
+    switchMap(({payload: {name, email, password, errorsOwner}}) => {
       return ajax({
         url: 'http://localhost:4000/user/register',
         method: 'POST',
@@ -25,9 +25,19 @@ export const registerUserEpic = (action$) => {
           setAuthHeaderToLocalStorage({header: AuthorizationHeader})
           return authActions.registerUserFulfilled(response)
         }),
-        catchError(({response: data}) =>
-          of(authActions.registerUserFailed({errors: data}))
-        )
+        catchError(({response: data}) => {
+          const errorsWithUniqId = data.map((error) => ({
+            ...error,
+            id: Symbol(),
+          }))
+
+          return of(
+            authActions.registerUserFailed({
+              errors: errorsWithUniqId,
+              errorsOwner,
+            })
+          )
+        })
       )
     })
   )

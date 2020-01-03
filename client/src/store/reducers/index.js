@@ -4,6 +4,7 @@ const defaultState = {
   user: null,
   groups: null,
   tasks: null,
+  errors: {},
 }
 
 export default (state = defaultState, {type, payload}) => {
@@ -52,6 +53,17 @@ export default (state = defaultState, {type, payload}) => {
           }
           return task
         }),
+      }
+    case types.REGISTER_USER_FAILED:
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          [payload.errorsOwner]: [
+            ...state.errors[payload.errorsOwner],
+            ...payload.errors,
+          ],
+        },
       }
     default:
       return state

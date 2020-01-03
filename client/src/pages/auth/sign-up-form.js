@@ -1,7 +1,11 @@
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useState, useRef, useMemo} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 
 import {authActions} from 'store/actions/creators'
+
+const getErrorObjectByDataPath = ({dataPath, errors}) => {
+  return errors.find((error) => error.dataPath === dataPath)
+}
 
 export const SignUpForm = () => {
   const [nameValue, setNameValue] = useState('')
@@ -9,6 +13,26 @@ export const SignUpForm = () => {
   const [passwordValue, setPasswordValue] = useState('')
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
+  const errorsOwner = useRef(`SignUpForm-${Date.now()}`)
+  const errors = useSelector((state) => state.errors[errorsOwner.current]) || []
+
+  const nameError = useMemo(
+    () => getErrorObjectByDataPath({dataPath: '.name', errors}),
+    [errors]
+  )
+  const emailError = useMemo(
+    () => getErrorObjectByDataPath({dataPath: '.email', errors}),
+    [errors]
+  )
+  const passwordError = useMemo(
+    () =>
+      getErrorObjectByDataPath({
+        dataPath: '.password',
+        errors,
+      }),
+    [errors]
+  )
+  console.log({nameError})
 
   const handleSubmitForm = (event) => {
     event.preventDefault()
@@ -18,6 +42,7 @@ export const SignUpForm = () => {
         name: nameValue,
         email: emailValue,
         password: passwordValue,
+        errorsOwner: errorsOwner.current,
       })
     )
   }
@@ -35,6 +60,7 @@ export const SignUpForm = () => {
         id="sign-up-name"
         required
       />
+      {nameError && <div style={{color: '#f00'}}>{nameError.message}</div>}
       <br />
       <label htmlFor="sign-up-email">Email</label>
       <br />
@@ -47,6 +73,7 @@ export const SignUpForm = () => {
         id="sign-up-email"
         required
       />
+      {emailError && <div style={{color: '#f00'}}>{emailError.message}</div>}
       <br />
       <label htmlFor="sign-up-password">Password</label>
       <br />
@@ -59,6 +86,9 @@ export const SignUpForm = () => {
         id="sign-up-password"
         required
       />
+      {passwordError && (
+        <div style={{color: '#f00'}}>{passwordError.message}</div>
+      )}
       <button type="submit" disabled={loading}>
         Register
       </button>

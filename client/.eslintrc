@@ -12,10 +12,11 @@
     "fetch": true,
     "Promise": true,
     "window": true,
-    "localStorage": true
+    "localStorage": true,
+    "Symbol": true
   },
   "rules": {
-    // "no-var": "error",
+    "no-var": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "react/prop-types": 2,

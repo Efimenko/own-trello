@@ -1,8 +1,8 @@
 import {types} from 'store/actions/types/index'
 
-export const registerUser = ({name, email, password}) => ({
+export const registerUser = ({name, email, password, errorsOwner}) => ({
   type: types.REGISTER_USER,
-  payload: {name, email, password},
+  payload: {name, email, password, errorsOwner},
 })
 
 export const registerUserFulfilled = ({_id, name, email}) => ({
@@ -10,9 +10,9 @@ export const registerUserFulfilled = ({_id, name, email}) => ({
   payload: {_id, name, email},
 })
 
-export const registerUserFailed = ({errors}) => ({
+export const registerUserFailed = ({errors, errorsOwner}) => ({
   type: types.REGISTER_USER_FAILED,
-  payload: {errors},
+  payload: {errors, errorsOwner},
 })
 
 export const loginUser = ({email, password}) => ({
