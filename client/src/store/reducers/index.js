@@ -60,7 +60,7 @@ export default (state = defaultState, {type, payload}) => {
         errors: {
           ...state.errors,
           [payload.errorsOwner]: [
-            ...state.errors[payload.errorsOwner],
+            ...(state.errors[payload.errorsOwner] || []),
             ...payload.errors,
           ],
         },
