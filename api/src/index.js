@@ -23,7 +23,7 @@ const app = express()
 app.use(express.json())
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:1234')
+  res.header('Access-Control-Allow-Origin', 'http://localhost:9000')
   res.header(
     'Access-Control-Allow-Headers',
     'Content-Type, Accept, Authorization'

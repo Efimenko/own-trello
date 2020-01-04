@@ -3,8 +3,8 @@ import {PropTypes} from 'prop-types'
 import {connect} from 'react-redux'
 import {or, explicitNull} from 'airbnb-prop-types'
 
-import GroupList from 'components/group-list/index'
-import {initDataActions, authActions} from 'store/actions/creators'
+import GroupList from '_components/group-list/index'
+import {initDataActions, authActions} from '_store/actions/creators'
 
 const GroupsPageView = ({tasks, groups, dispatch}) => {
   const fetchDataInitiated = useRef(false)

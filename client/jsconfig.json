@@ -5,10 +5,14 @@
       "allowSyntheticDefaultImports": true,
       "baseUrl": "./",
       "paths": {
-        "store/*": ["src/store/*"],
-        "utils/*": ["utils/*"],
-        "components/*": ["src/components/*"],
-        "pages/*": ["src/pages/*"]
+        "_store": ["src/store"],
+        "_store/*": ["src/store/*"],
+        "_utils": ["src/utils"],
+        "_utils/*": ["src/utils/*"],
+        "_components": ["src/components"],
+        "_components/*": ["src/components/*"],
+        "_pages": ["src/pages"],
+        "_pages/*": ["src/pages/*"]
       }
   }
 }

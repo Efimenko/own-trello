@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import {TaskItem} from './task-item'
-import {tasksActions} from 'store/actions/creators/index'
+import {tasksActions} from '_store/actions/creators/index'
 
 const TaskListView = ({tasks, dispatch}) => {
   if (!tasks.length) return null

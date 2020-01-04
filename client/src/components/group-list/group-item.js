@@ -2,7 +2,7 @@ import React from 'react'
 import {PropTypes} from 'prop-types'
 import {AddTaskForm} from './add-task-form'
 import {TaskList} from './task-list'
-import {getTasksByParentId} from 'utils'
+import {getTasksByParentId} from '_utils'
 
 export const GroupItem = ({id, title, tasks}) => (
   <section>

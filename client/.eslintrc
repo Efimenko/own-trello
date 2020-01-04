@@ -13,7 +13,10 @@
     "Promise": true,
     "window": true,
     "localStorage": true,
-    "Symbol": true
+    "Symbol": true,
+    "require": true,
+    "module": true,
+    "__dirname": true
   },
   "rules": {
     "no-var": "error",

@@ -3,8 +3,8 @@ import {of} from 'rxjs'
 import {switchMap, catchError, map} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
-import {types} from 'store/actions/types'
-import {authActions} from 'store/actions/creators'
+import {types} from '_store/actions/types'
+import {authActions} from '_store/actions/creators'
 import {setAuthHeaderToLocalStorage} from '../utils'
 
 export const registerUserEpic = (action$) => {

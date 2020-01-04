@@ -1,4 +1,4 @@
-import {types} from 'store/actions/types/index'
+import {types} from '_store/actions/types/index'
 
 export const registerUser = ({name, email, password, errorsOwner}) => ({
   type: types.REGISTER_USER,

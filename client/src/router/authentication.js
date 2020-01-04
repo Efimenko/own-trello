@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {PropTypes} from 'prop-types'
 
-import {authActions} from 'store/actions/creators'
+import {authActions} from '_store/actions/creators'
 
 export const Authentication = ({children}) => {
   const user = useSelector((state) => state.user)
