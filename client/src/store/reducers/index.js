@@ -5,14 +5,43 @@ const defaultState = {
   groups: null,
   tasks: null,
   errors: {},
+  processes: {},
 }
 
 export default (state = defaultState, {type, payload}) => {
   switch (type) {
+    case types.REGISTER_USER:
+      return {
+        ...state,
+        processes: {...state.processes, userRegistrationInProgress: true},
+      }
     case types.REGISTER_USER_FULFILLED:
       return {
         ...state,
         user: payload,
+        processes: {
+          ...Object.keys(state.processes).reduce((acc, processItem) => {
+            if (processItem === 'userRegistrationInProgress') return acc
+            return {...acc, [processItem]: state.processes[processItem]}
+          }, {}),
+        },
+      }
+    case types.REGISTER_USER_FAILED:
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          [payload.errorsOwner]: [
+            ...(state.errors[payload.errorsOwner] || []),
+            ...payload.errors,
+          ],
+        },
+        processes: {
+          ...Object.keys(state.processes).reduce((acc, processItem) => {
+            if (processItem === 'userRegistrationInProgress') return acc
+            return {...acc, [processItem]: state.processes[processItem]}
+          }, {}),
+        },
       }
     case types.LOGIN_USER_FULFILLED:
       return {
@@ -54,14 +83,16 @@ export default (state = defaultState, {type, payload}) => {
           return task
         }),
       }
-    case types.REGISTER_USER_FAILED:
+    case types.REMOVE_ERROR:
+      console.log({payload})
       return {
         ...state,
         errors: {
           ...state.errors,
           [payload.errorsOwner]: [
-            ...(state.errors[payload.errorsOwner] || []),
-            ...payload.errors,
+            ...(state.errors[payload.errorsOwner].filter(
+              (error) => error.id !== payload.errorId
+            ) || []),
           ],
         },
       }
