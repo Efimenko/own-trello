@@ -5,7 +5,7 @@ const defaultState = {
   groups: null,
   tasks: null,
   errors: {},
-  processes: {},
+  inProgress: {},
 }
 
 export default (state = defaultState, {type, payload}) => {
@@ -13,16 +13,16 @@ export default (state = defaultState, {type, payload}) => {
     case types.REGISTER_USER:
       return {
         ...state,
-        processes: {...state.processes, userRegistrationInProgress: true},
+        inProgress: {...state.inProgress, userRegistration: true},
       }
     case types.REGISTER_USER_FULFILLED:
       return {
         ...state,
         user: payload,
-        processes: {
-          ...Object.keys(state.processes).reduce((acc, processItem) => {
-            if (processItem === 'userRegistrationInProgress') return acc
-            return {...acc, [processItem]: state.processes[processItem]}
+        inProgress: {
+          ...Object.keys(state.inProgress).reduce((acc, processItem) => {
+            if (processItem === 'userRegistration') return acc
+            return {...acc, [processItem]: state.inProgress[processItem]}
           }, {}),
         },
       }
@@ -36,10 +36,13 @@ export default (state = defaultState, {type, payload}) => {
             ...payload.errors,
           ],
         },
-        processes: {
-          ...Object.keys(state.processes).reduce((acc, processItem) => {
-            if (processItem === 'userRegistrationInProgress') return acc
-            return {...acc, [processItem]: state.processes[processItem]}
+        inProgress: {
+          ...Object.keys(state.inProgress).reduce((acc, entityInProgress) => {
+            if (entityInProgress === 'userRegistration') return acc
+            return {
+              ...acc,
+              [entityInProgress]: state.inProgress[entityInProgress],
+            }
           }, {}),
         },
       }
@@ -84,7 +87,6 @@ export default (state = defaultState, {type, payload}) => {
         }),
       }
     case types.REMOVE_ERROR:
-      console.log({payload})
       return {
         ...state,
         errors: {

@@ -11,17 +11,17 @@ export const SignUpForm = () => {
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
-  const registrationInProgress = useSelector(
-    (state) => state.processes.userRegistrationInProgress
+  const userRegistrationInProgress = useSelector(
+    (state) => state.inProgress.userRegistration
   )
-  const [loading, setLoading] = useState(Boolean(registrationInProgress))
+  const [loading, setLoading] = useState(Boolean(userRegistrationInProgress))
   const dispatch = useDispatch()
   const errorsOwner = useRef(`SignUpForm-${Date.now()}`)
   const errors = useSelector((state) => state.errors[errorsOwner.current]) || []
 
   useEffect(() => {
-    setLoading(Boolean(registrationInProgress))
-  }, [registrationInProgress])
+    setLoading(Boolean(userRegistrationInProgress))
+  }, [userRegistrationInProgress])
 
   const nameError = useMemo(
     () => getErrorObjectByDataPath({dataPath: '.name', errors}),
@@ -81,8 +81,6 @@ export const SignUpForm = () => {
     }
     inputsData[type].setter(value)
   }
-
-  console.log({loading, hasError, registrationInProgress})
 
   return (
     <form onSubmit={handleSubmitForm}>
