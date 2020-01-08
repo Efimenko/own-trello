@@ -1,14 +1,14 @@
 import React from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
-import {AuthPage, GroupPage} from '_pages'
+import {AuthPage, GroupsPage} from '_pages'
 import {Authentication} from './authentication'
 import {RedirectsResolver} from './redirects-resolver'
 
 const routes = [
   {
     path: '/',
-    Component: GroupPage,
+    Component: GroupsPage,
     exact: true,
   },
   {

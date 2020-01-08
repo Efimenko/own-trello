@@ -7,7 +7,7 @@ export const addGroup = ({title}) => ({
   payload: {title},
 })
 
-export const addGroupFulfilled = (group) => ({
+export const addGroupFulfilled = ({group}) => ({
   type: types.ADD_GROUP_FULFILLED,
   payload: group,
 })
@@ -15,4 +15,20 @@ export const addGroupFulfilled = (group) => ({
 export const addGroupFailed = (message) => ({
   type: types.ADD_GROUP_FAILED,
   payload: message,
+})
+
+export const getGroups = ({errorsOwner}) => ({
+  type: types.GET_GROUPS,
+  payload: {errorsOwner},
+})
+
+//TODO: think about removing getTasksFailed and getGroupsFulfilled
+
+export const getGroupsFulfilled = ({groups}) => ({
+  type: types.GET_GROUPS_FULFILLED,
+  payload: groups,
+})
+
+export const getGroupsFailed = () => ({
+  type: types.GET_GROUPS_FAILED,
 })

@@ -3,7 +3,11 @@ import {switchMap, map, catchError} from 'rxjs/operators'
 import {forkJoin} from 'rxjs'
 import {ajax} from 'rxjs/ajax'
 
-import {initDataActions} from '../../actions/creators'
+import {
+  initDataActions,
+  tasksActions,
+  groupsActions,
+} from 'store/actions/creators'
 import {types} from '../../actions/types'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 
@@ -26,8 +30,12 @@ export const getInitDataEpic = ($action) => {
         }),
       }).pipe(
         map(({tasks: {response: tasks}, groups: {response: groups}}) => {
-          return initDataActions.getInitDataFulfilled({tasks, groups})
+          return [
+            tasksActions.addTaskFulfilled({task: tasks}),
+            groupsActions.addGroupFulfilled({group: groups}),
+          ]
         }),
+        // TODO: think about removing getInitDataFailed
         catchError((error) => initDataActions.getInitDataFailed(error.message))
       )
     )

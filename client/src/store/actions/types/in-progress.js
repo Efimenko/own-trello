@@ -1,0 +1,4 @@
+export const inProgressTypes = {
+  REMOVE_FROM_IN_PROGRESS: 'REMOVE_FROM_IN_PROGRESS',
+  ADD_TO_IN_PROGRESS: 'ADD_TO_IN_PROGRESS',
+}

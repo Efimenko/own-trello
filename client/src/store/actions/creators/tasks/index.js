@@ -2,12 +2,12 @@ import {types} from '../../types'
 
 /* Add task action creators */
 
-export const addTask = (newTask) => ({
+export const addTask = ({task}) => ({
   type: types.ADD_TASK,
-  payload: newTask,
+  payload: task,
 })
 
-export const addTaskFulfilled = (task) => ({
+export const addTaskFulfilled = ({task}) => ({
   type: types.ADD_TASK_FULFILLED,
   payload: task,
 })
@@ -49,4 +49,21 @@ export const updateTaskFulfilled = ({_id, title, description}) => ({
 export const updateTaskFailed = ({message}) => ({
   type: types.UPDATE_TASK_FAILED,
   payload: message,
+})
+
+/* Get tasks action creators */
+
+export const getTasks = () => ({
+  type: types.GET_TASKS,
+})
+
+export const getTasksFulfilled = ({tasks}) => ({
+  type: types.GET_TASKS_FULFILLED,
+  payload: tasks,
+})
+
+//TODO: think about removing getTasksFailed
+
+export const getTasksFailed = () => ({
+  type: types.GET_TASKS_FAILED,
 })
