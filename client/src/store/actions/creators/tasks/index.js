@@ -2,12 +2,12 @@ import {types} from '../../types'
 
 /* Add task action creators */
 
-export const addTask = (newTask) => ({
+export const addTask = ({task}) => ({
   type: types.ADD_TASK,
-  payload: newTask,
+  payload: task,
 })
 
-export const addTaskFulfilled = (task) => ({
+export const addTaskFulfilled = ({task}) => ({
   type: types.ADD_TASK_FULFILLED,
   payload: task,
 })
