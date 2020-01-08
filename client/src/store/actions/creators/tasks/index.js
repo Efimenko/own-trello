@@ -50,3 +50,20 @@ export const updateTaskFailed = ({message}) => ({
   type: types.UPDATE_TASK_FAILED,
   payload: message,
 })
+
+/* Get tasks action creators */
+
+export const getTasks = () => ({
+  type: types.GET_TASKS,
+})
+
+export const getTasksFulfilled = ({tasks}) => ({
+  type: types.GET_TASKS_FULFILLED,
+  payload: tasks,
+})
+
+//TODO: think about removing getTasksFailed
+
+export const getTasksFailed = () => ({
+  type: types.GET_TASKS_FAILED,
+})

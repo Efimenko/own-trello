@@ -37,8 +37,8 @@ export const registerUserEpic = (action$) => {
             }),
           ]
         }),
-        catchError(({response: data}) => {
-          const errorsWithUniqId = data.map((error) => ({
+        catchError(({response: errors}) => {
+          const errorsWithUniqId = errors.map((error) => ({
             ...error,
             id: Symbol(),
           }))

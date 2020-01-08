@@ -1,2 +1,2 @@
 export {AuthPage} from './auth'
-export {GroupPage} from './groups'
+export {GroupsPage} from './groups'

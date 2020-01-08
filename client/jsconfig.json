@@ -5,9 +5,13 @@
       "allowSyntheticDefaultImports": true,
       "baseUrl": "./",
       "paths": {
+        "store": ["src/store"],
         "store/*": ["src/store/*"],
+        "utils": ["utils"],
         "utils/*": ["utils/*"],
+        "components": ["src/components"],
         "components/*": ["src/components/*"],
+        "pages": ["src/pages"],
         "pages/*": ["src/pages/*"]
       }
   }
