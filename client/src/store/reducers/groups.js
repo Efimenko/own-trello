@@ -1,4 +1,4 @@
-import {types} from 'store/actions/types'
+import {types} from '_store/actions/types'
 const defaultState = null
 
 export const groups = (state = defaultState, {type, payload}) => {

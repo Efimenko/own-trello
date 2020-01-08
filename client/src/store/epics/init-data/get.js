@@ -7,7 +7,7 @@ import {
   initDataActions,
   tasksActions,
   groupsActions,
-} from 'store/actions/creators'
+} from '_store/actions/creators'
 import {types} from '../../actions/types'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 

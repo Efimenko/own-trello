@@ -1,4 +1,4 @@
-import {types} from 'store/actions/types/index'
+import {types} from '_store/actions/types/index'
 const defaultState = null
 
 export const tasks = (state = defaultState, {type, payload}) => {

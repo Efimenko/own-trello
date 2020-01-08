@@ -6,7 +6,7 @@ import {
   tasksActions,
   inProgressActions,
   errorsActions,
-} from 'store/actions/creators'
+} from '_store/actions/creators'
 import {types} from '../../actions/types'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 import {of, concat} from 'rxjs'
