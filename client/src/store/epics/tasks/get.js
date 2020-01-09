@@ -1,5 +1,5 @@
 import {ofType} from 'redux-observable'
-import {switchMap, map, catchError} from 'rxjs/operators'
+import {switchMap, catchError, flatMap} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
 import {
@@ -14,42 +14,46 @@ import {of, concat} from 'rxjs'
 export const getTasksEpic = ($action) => {
   return $action.pipe(
     ofType(types.GET_TASKS),
-    switchMap(() =>
-      of(inProgressActions.addToInProgress({entityName: 'groupsPage'}))
-    ),
-    switchMap(({payload: {errorsOwner}}) =>
-      ajax({
-        url: 'http://localhost:4000/tasks',
-        headers: {
-          Authorization: getAuthHeaderFromLocalStorage(),
-        },
-      }).pipe(
-        map(({response: groups}) => [
-          tasksActions.addGroupFulfilled({group: groups}),
-          inProgressActions.removeFromInProgress({
-            entityName: 'groupsPage',
-          }),
-        ]),
-        catchError(({response: errors}) => {
-          const errorsWithUniqId = errors.map((error) => ({
-            ...error,
-            id: Symbol(),
-          }))
-
-          return concat(
-            of(
-              inProgressActions.removeFromInProgress({
-                entityName: 'groupsPage',
-              })
-            ),
-            of(
-              errorsActions.addError({
-                errors: errorsWithUniqId,
-                errorsOwner,
-              })
+    switchMap(({payload: {errorsOwner, inProgressEvent}}) =>
+      concat(
+        of(inProgressActions.addToInProgress({inProgressEvent})),
+        ajax({
+          url: 'http://localhost:4000/tasks',
+          headers: {
+            Authorization: getAuthHeaderFromLocalStorage(),
+          },
+        }).pipe(
+          flatMap(({response: tasks}) =>
+            concat(
+              of(tasksActions.addTaskFulfilled({task: tasks})),
+              of(
+                inProgressActions.removeFromInProgress({
+                  inProgressEvent,
+                })
+              )
             )
-          )
-        })
+          ),
+          catchError(({response: errors}) => {
+            const errorsWithUniqId = errors.map((error) => ({
+              ...error,
+              id: Symbol(),
+            }))
+
+            return concat(
+              of(
+                inProgressActions.removeFromInProgress({
+                  inProgressEvent,
+                })
+              ),
+              of(
+                errorsActions.addError({
+                  errors: errorsWithUniqId,
+                  errorsOwner,
+                })
+              )
+            )
+          })
+        )
       )
     )
   )

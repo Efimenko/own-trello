@@ -17,9 +17,9 @@ export const addGroupFailed = (message) => ({
   payload: message,
 })
 
-export const getGroups = ({errorsOwner}) => ({
+export const getGroups = ({errorsOwner, inProgressEvent}) => ({
   type: types.GET_GROUPS,
-  payload: {errorsOwner},
+  payload: {errorsOwner, inProgressEvent},
 })
 
 //TODO: think about removing getTasksFailed and getGroupsFulfilled

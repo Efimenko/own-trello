@@ -8,26 +8,40 @@ export const GroupsPage = () => {
   const groups = useSelector((state) => state.groups)
   const tasks = useSelector((state) => state.tasks)
   const dispatch = useDispatch()
-  const groupsPageInProgress =
-    useSelector((state) => state.inProgress.groupsPage) || !groups || !tasks
+  const fetchGroupsInProgress = useSelector(
+    (state) => state.inProgress.fetchGroups
+  )
+  const fetchTasksInProgress = useSelector(
+    (state) => state.inProgress.fetchTasks
+  )
+  const shouldBeShownLoading =
+    fetchGroupsInProgress || !groups || fetchTasksInProgress || !tasks
 
   useEffect(() => {
-    if (!groups) {
-      dispatch(groupsActions.getGroups({errorsOwner: 'groupsPage'}))
+    if (!groups && !fetchGroupsInProgress) {
+      dispatch(
+        groupsActions.getGroups({
+          errorsOwner: 'groupsPage',
+          inProgressEvent: 'fetchGroups',
+        })
+      )
     }
-    if (!tasks) {
-      dispatch(tasksActions.getTasks())
+    if (!tasks && !fetchTasksInProgress) {
+      dispatch(
+        tasksActions.getTasks({
+          errorsOwner: 'groupsPage',
+          inProgressEvent: 'fetchTasks',
+        })
+      )
     }
-  }, [tasks, groups, dispatch])
+  }, [tasks, groups, dispatch, fetchGroupsInProgress, fetchTasksInProgress])
 
   const handleLogOut = () => {
     localStorage.removeItem('authToken')
     dispatch(authActions.logOutUser())
   }
 
-  console.log({groupsPageInProgress})
-
-  return groupsPageInProgress ? (
+  return shouldBeShownLoading ? (
     'Loading groups...'
   ) : (
     <React.Fragment>

@@ -53,8 +53,9 @@ export const updateTaskFailed = ({message}) => ({
 
 /* Get tasks action creators */
 
-export const getTasks = () => ({
+export const getTasks = ({errorsOwner, inProgressEvent}) => ({
   type: types.GET_TASKS,
+  payload: {errorsOwner, inProgressEvent},
 })
 
 export const getTasksFulfilled = ({tasks}) => ({

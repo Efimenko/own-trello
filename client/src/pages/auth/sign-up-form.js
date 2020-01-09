@@ -51,6 +51,7 @@ export const SignUpForm = () => {
         email: emailValue,
         password: passwordValue,
         errorsOwner: errorsOwner.current,
+        inProgressEvent: 'userRegistration',
       })
     )
   }
