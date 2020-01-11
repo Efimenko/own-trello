@@ -19,11 +19,11 @@ export const loginUserEpic = (action$) => {
         },
         body: JSON.stringify({email, password}),
       }).pipe(
-        map(({status, response, xhr}) => {
+        map(({status, response: {_id, name, email}, xhr}) => {
           if (status === 200) {
             const AuthorizationHeader = xhr.getResponseHeader('Authorization')
             setAuthHeaderToLocalStorage({header: AuthorizationHeader})
-            return authActions.loginUserFulfilled(response)
+            return authActions.addUser({_id, name, email})
           } else {
             return authActions.loginUserFailed({
               message: 'Something went wrong',

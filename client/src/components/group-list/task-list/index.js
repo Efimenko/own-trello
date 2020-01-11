@@ -9,7 +9,7 @@ const TaskListView = ({tasks, dispatch}) => {
   if (!tasks.length) return null
 
   const handleRemoveTask = (taskId) => () => {
-    dispatch(tasksActions.removeTask(taskId))
+    dispatch(tasksActions.removing(taskId))
   }
 
   return (

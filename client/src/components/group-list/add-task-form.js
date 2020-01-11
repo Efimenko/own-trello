@@ -13,8 +13,15 @@ const AddTaskFormView = ({parentId, dispatch}) => {
   const resetInput = () => setInputValue('')
   const resetTextarea = () => setTextareaValue('')
 
-  const addNewTask = (task) => {
-    dispatch(tasksActions.addTask(task))
+  const addNewTask = ({title, description, parent}) => {
+    dispatch(
+      tasksActions.adding({
+        parent,
+        description,
+        title,
+        errorsOwner: 'addTaskForm',
+      })
+    )
   }
 
   const handleSubmitForm = (event) => {

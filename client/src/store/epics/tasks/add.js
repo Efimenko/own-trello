@@ -2,14 +2,14 @@ import {ajax} from 'rxjs/ajax'
 import {map, mergeMap, catchError} from 'rxjs/operators'
 import {ofType} from 'redux-observable'
 
-import {types} from '../../actions/types'
-import {tasksActions} from '../../actions/creators'
+import {tasksTypes} from '../../actions/types'
+import {tasksActions, errorsActions} from '../../actions/creators'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 
 export const addTaskEpic = (action$) => {
   return action$.pipe(
-    ofType(types.ADD_TASK),
-    mergeMap(({payload}) =>
+    ofType(tasksTypes.ADDING),
+    mergeMap(({payload: {parent, description, title, errorsOwner}}) =>
       ajax({
         url: 'http://localhost:4000/task/add',
         method: 'POST',
@@ -18,16 +18,20 @@ export const addTaskEpic = (action$) => {
           'Content-Type': 'application/json',
           Authorization: getAuthHeaderFromLocalStorage(),
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({parent, description, title}),
       }).pipe(
-        map(({status, response}) => {
-          if (status === 201) {
-            return tasksActions.addTaskFulfilled(response)
-          } else {
-            return tasksActions.addTaskFailed('Something went wrong')
-          }
-        }),
-        catchError((error) => tasksActions.addTaskFailed(error.message))
+        map(({response: task}) => tasksActions.added({task})),
+        catchError(({response: errors}) => {
+          const errorsWithUniqId = errors.map((error) => ({
+            ...error,
+            id: Symbol(),
+          }))
+
+          return errorsActions.addError({
+            errors: errorsWithUniqId,
+            errorsOwner,
+          })
+        })
       )
     )
   )

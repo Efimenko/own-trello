@@ -27,11 +27,11 @@ export const registerUserEpic = (action$) => {
             },
             body: JSON.stringify({name, email, password}),
           }).pipe(
-            map(({response, xhr}) => {
+            map(({response: {_id, name, email}, xhr}) => {
               const AuthorizationHeader = xhr.getResponseHeader('Authorization')
               setAuthHeaderToLocalStorage({header: AuthorizationHeader})
               return [
-                authActions.registerUserFulfilled(response),
+                authActions.addUser({_id, name, email}),
                 inProgressActions.removeFromInProgress({inProgressEvent}),
               ]
             }),

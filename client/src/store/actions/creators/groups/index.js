@@ -32,3 +32,7 @@ export const getGroupsFulfilled = ({groups}) => ({
 export const getGroupsFailed = () => ({
   type: types.GET_GROUPS_FAILED,
 })
+
+export const clearGroups = () => ({
+  type: types.CLEAR_GROUPS,
+})

@@ -11,8 +11,8 @@ export const registerUser = ({
   payload: {name, email, password, errorsOwner, inProgressEvent},
 })
 
-export const registerUserFulfilled = ({_id, name, email}) => ({
-  type: types.REGISTER_USER_FULFILLED,
+export const addUser = ({_id, name, email}) => ({
+  type: types.ADD_USER,
   payload: {_id, name, email},
 })
 
@@ -24,11 +24,6 @@ export const registerUserFailed = ({errors, errorsOwner}) => ({
 export const loginUser = ({email, password}) => ({
   type: types.LOGIN_USER,
   payload: {email, password},
-})
-
-export const loginUserFulfilled = ({_id, name, email}) => ({
-  type: types.LOGIN_USER_FULFILLED,
-  payload: {_id, name, email},
 })
 
 export const loginUserFailed = ({message}) => ({
@@ -48,4 +43,8 @@ export const loginUserByTokenFailed = ({message}) => ({
 
 export const logOutUser = () => ({
   type: types.LOG_OUT_USER,
+})
+
+export const clearUser = () => ({
+  type: types.CLEAR_USER,
 })

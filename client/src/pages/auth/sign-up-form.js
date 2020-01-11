@@ -1,7 +1,7 @@
 import React, {useState, useRef, useMemo, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {authActions, errorActions} from 'store/actions/creators'
+import {authActions, errorsActions} from 'store/actions/creators'
 
 const getErrorObjectByDataPath = ({dataPath, errors}) => {
   return errors.find((error) => error.dataPath === dataPath)
@@ -74,7 +74,7 @@ export const SignUpForm = () => {
 
     if (inputsData[type].error) {
       dispatch(
-        errorActions.removeError({
+        errorsActions.removeError({
           errorId: inputsData[type].error.id,
           errorsOwner: errorsOwner.current,
         })

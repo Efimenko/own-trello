@@ -8,6 +8,8 @@ export const groups = (state = defaultState, {type, payload}) => {
         ...(state || []),
         ...(Array.isArray(payload) ? payload : [payload]),
       ]
+    case types.CLEAR_GROUPS:
+      return defaultState
     default:
       return state
   }

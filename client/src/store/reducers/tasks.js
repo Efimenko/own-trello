@@ -1,22 +1,24 @@
-import {types} from 'store/actions/types/index'
+import {tasksTypes} from 'store/actions/types'
 const defaultState = null
 
 export const tasks = (state = defaultState, {type, payload}) => {
   switch (type) {
-    case types.ADD_TASK_FULFILLED:
+    case tasksTypes.ADDED:
       return [
         ...(state || []),
-        ...(Array.isArray(payload) ? payload : [payload]),
+        ...(Array.isArray(payload.task) ? payload.task : [payload.task]),
       ]
-    case types.REMOVE_TASK_FULFILLED:
+    case tasksTypes.REMOVED:
       return state.filter((task) => task._id !== payload)
-    case types.UPDATE_TASK_FULFILLED:
+    case tasksTypes.UPDATED:
       return state.map((task) => {
         if (task._id === payload._id) {
-          return {...payload}
+          return {...task, ...payload}
         }
         return task
       })
+    case tasksTypes.CLEAR:
+      return defaultState
     default:
       return state
   }

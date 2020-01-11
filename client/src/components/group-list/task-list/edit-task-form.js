@@ -39,7 +39,7 @@ const EditTaskFormView = ({
   }
 
   const updateTask = ({taskId, title, description}) => {
-    dispatch(tasksActions.updateTask({taskId, data: {title, description}}))
+    dispatch(tasksActions.updating({taskId, data: {title, description}}))
   }
 
   const handleSubmitForm = (event) => {

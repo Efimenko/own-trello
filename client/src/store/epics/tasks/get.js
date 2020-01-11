@@ -7,13 +7,13 @@ import {
   inProgressActions,
   errorsActions,
 } from 'store/actions/creators'
-import {types} from '../../actions/types'
+import {tasksTypes} from '../../actions/types'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 import {of, concat} from 'rxjs'
 
 export const getTasksEpic = ($action) => {
   return $action.pipe(
-    ofType(types.GET_TASKS),
+    ofType(tasksTypes.GET),
     switchMap(({payload: {errorsOwner, inProgressEvent}}) =>
       concat(
         of(inProgressActions.addToInProgress({inProgressEvent})),
@@ -23,16 +23,16 @@ export const getTasksEpic = ($action) => {
             Authorization: getAuthHeaderFromLocalStorage(),
           },
         }).pipe(
-          flatMap(({response: tasks}) =>
-            concat(
-              of(tasksActions.addTaskFulfilled({task: tasks})),
+          flatMap(({response: task}) => {
+            return concat(
+              of(tasksActions.added({task})),
               of(
                 inProgressActions.removeFromInProgress({
                   inProgressEvent,
                 })
               )
             )
-          ),
+          }),
           catchError(({response: errors}) => {
             const errorsWithUniqId = errors.map((error) => ({
               ...error,

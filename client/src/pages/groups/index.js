@@ -28,7 +28,7 @@ export const GroupsPage = () => {
     }
     if (!tasks && !fetchTasksInProgress) {
       dispatch(
-        tasksActions.getTasks({
+        tasksActions.get({
           errorsOwner: 'groupsPage',
           inProgressEvent: 'fetchTasks',
         })

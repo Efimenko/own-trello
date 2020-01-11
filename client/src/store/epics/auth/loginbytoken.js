@@ -18,9 +18,9 @@ export const loginUserByTokenEpic = (action$) => {
         },
         body: JSON.stringify({token}),
       }).pipe(
-        map(({status, response}) => {
+        map(({status, response: {_id, name, email}}) => {
           if (status === 200) {
-            return authActions.loginUserFulfilled(response)
+            return authActions.addUser({_id, name, email})
           } else {
             return authActions.loginUserByTokenFailed({
               message: 'Something went wrong',
