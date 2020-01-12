@@ -16,7 +16,7 @@ export const getTasksEpic = ($action) => {
     ofType(tasksTypes.GET),
     switchMap(({payload: {errorsOwner, inProgressEvent}}) =>
       concat(
-        of(inProgressActions.addToInProgress({inProgressEvent})),
+        of(inProgressActions.add({inProgressEvent})),
         ajax({
           url: 'http://localhost:4000/tasks',
           headers: {
@@ -27,7 +27,7 @@ export const getTasksEpic = ($action) => {
             return concat(
               of(tasksActions.added({task})),
               of(
-                inProgressActions.removeFromInProgress({
+                inProgressActions.remove({
                   inProgressEvent,
                 })
               )
@@ -41,7 +41,7 @@ export const getTasksEpic = ($action) => {
 
             return concat(
               of(
-                inProgressActions.removeFromInProgress({
+                inProgressActions.remove({
                   inProgressEvent,
                 })
               ),

@@ -16,7 +16,7 @@ export const getGroupsEpic = ($action) => {
     ofType(types.GET_GROUPS),
     switchMap(({payload: {errorsOwner, inProgressEvent}}) =>
       concat(
-        of(inProgressActions.addToInProgress({inProgressEvent})),
+        of(inProgressActions.add({inProgressEvent})),
         ajax({
           url: 'http://localhost:4000/groups',
           headers: {
@@ -26,7 +26,7 @@ export const getGroupsEpic = ($action) => {
           flatMap(({response: groups}) =>
             concat(
               of(groupsActions.addGroupFulfilled({group: groups})),
-              of(inProgressActions.removeFromInProgress({inProgressEvent}))
+              of(inProgressActions.remove({inProgressEvent}))
             )
           ),
           catchError(({response: errors}) => {
@@ -36,7 +36,7 @@ export const getGroupsEpic = ($action) => {
             }))
 
             return concat(
-              of(inProgressActions.removeFromInProgress({inProgressEvent})),
+              of(inProgressActions.remove({inProgressEvent})),
               of(
                 errorsActions.addError({
                   errors: errorsWithUniqId,

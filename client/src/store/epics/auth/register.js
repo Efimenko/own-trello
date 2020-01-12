@@ -17,7 +17,7 @@ export const registerUserEpic = (action$) => {
     switchMap(
       ({payload: {name, email, password, errorsOwner, inProgressEvent}}) =>
         concat(
-          of(inProgressActions.addToInProgress({inProgressEvent})),
+          of(inProgressActions.add({inProgressEvent})),
           ajax({
             url: 'http://localhost:4000/user/register',
             method: 'POST',
@@ -32,7 +32,7 @@ export const registerUserEpic = (action$) => {
               setAuthHeaderToLocalStorage({header: AuthorizationHeader})
               return [
                 authActions.addUser({_id, name, email}),
-                inProgressActions.removeFromInProgress({inProgressEvent}),
+                inProgressActions.remove({inProgressEvent}),
               ]
             }),
             catchError(({response: errors}) => {
@@ -42,7 +42,7 @@ export const registerUserEpic = (action$) => {
               }))
 
               return concat(
-                of(inProgressActions.removeFromInProgress({inProgressEvent})),
+                of(inProgressActions.remove({inProgressEvent})),
                 of(
                   errorsActions.addError({
                     errors: errorsWithUniqId,

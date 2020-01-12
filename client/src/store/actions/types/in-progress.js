@@ -1,4 +1,6 @@
+const prefix = 'IN_PROGRESS'
+
 export const inProgressTypes = {
-  REMOVE_FROM_IN_PROGRESS: 'REMOVE_FROM_IN_PROGRESS',
-  ADD_TO_IN_PROGRESS: 'ADD_TO_IN_PROGRESS',
+  ADD: `${prefix}:ADD`,
+  REMOVE: `${prefix}:REMOVE`,
 }

@@ -1,11 +1,11 @@
-import {types} from '../types'
+import {inProgressTypes} from '../types'
 
-export const addToInProgress = ({inProgressEvent}) => ({
-  type: types.ADD_TO_IN_PROGRESS,
+export const add = ({inProgressEvent}) => ({
+  type: inProgressTypes.ADD,
   payload: {inProgressEvent},
 })
 
-export const removeFromInProgress = ({inProgressEvent}) => ({
-  type: types.REMOVE_FROM_IN_PROGRESS,
+export const remove = ({inProgressEvent}) => ({
+  type: inProgressTypes.REMOVE,
   payload: {inProgressEvent},
 })
