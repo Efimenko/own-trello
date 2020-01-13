@@ -74,7 +74,7 @@ export const SignUpForm = () => {
 
     if (inputsData[type].error) {
       dispatch(
-        errorsActions.removeError({
+        errorsActions.remove({
           errorId: inputsData[type].error.id,
           errorsOwner: errorsOwner.current,
         })

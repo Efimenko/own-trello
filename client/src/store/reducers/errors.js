@@ -1,9 +1,9 @@
-import {types} from '../actions/types'
+import {errorsTypes} from '../actions/types'
 const defaultState = {}
 
 export const errors = (state = defaultState, {type, payload}) => {
   switch (type) {
-    case types.ADD_ERROR:
+    case errorsTypes.ADD:
       return {
         ...state,
         [payload.errorsOwner]: [
@@ -11,7 +11,7 @@ export const errors = (state = defaultState, {type, payload}) => {
           ...payload.errors,
         ],
       }
-    case types.REMOVE_ERROR:
+    case errorsTypes.REMOVE:
       return {
         ...state,
         [payload.errorsOwner]: [

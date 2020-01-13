@@ -1,4 +1,6 @@
+const prefix = 'ERRORS'
+
 export const errorsTypes = {
-  REMOVE_ERROR: 'REMOVE_ERROR',
-  ADD_ERROR: 'ADD_ERROR',
+  ADD: `${prefix}:ADD`,
+  REMOVE: `${prefix}:REMOVE`,
 }

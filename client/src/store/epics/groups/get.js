@@ -38,7 +38,7 @@ export const getGroupsEpic = ($action) => {
             return concat(
               of(inProgressActions.remove({inProgressEvent})),
               of(
-                errorsActions.addError({
+                errorsActions.add({
                   errors: errorsWithUniqId,
                   errorsOwner,
                 })

@@ -46,7 +46,7 @@ export const getTasksEpic = ($action) => {
                 })
               ),
               of(
-                errorsActions.addError({
+                errorsActions.add({
                   errors: errorsWithUniqId,
                   errorsOwner,
                 })

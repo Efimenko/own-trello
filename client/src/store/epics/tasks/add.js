@@ -27,7 +27,7 @@ export const addTaskEpic = (action$) => {
             id: Symbol(),
           }))
 
-          return errorsActions.addError({
+          return errorsActions.add({
             errors: errorsWithUniqId,
             errorsOwner,
           })
