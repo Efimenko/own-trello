@@ -2,14 +2,14 @@ import {ofType} from 'redux-observable'
 import {mergeMap, map, catchError} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
-import {types} from '../../actions/types'
-import {groupsActions} from '../../actions/creators'
+import {groupsTypes} from '../../actions/types'
+import {groupsActions, errorsActions} from '../../actions/creators'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 
 export const addGroupEpic = (action$) => {
   return action$.pipe(
-    ofType(types.ADD_GROUP),
-    mergeMap(({payload: {title}}) =>
+    ofType(groupsTypes.ADDING),
+    mergeMap(({payload: {title, errorsOwner}}) =>
       ajax({
         url: 'http://localhost:4000/group/add',
         method: 'POST',
@@ -20,14 +20,18 @@ export const addGroupEpic = (action$) => {
         },
         body: JSON.stringify({title}),
       }).pipe(
-        map(({status, response}) => {
-          if (status === 201) {
-            return groupsActions.addGroupFulfilled(response)
-          } else {
-            return groupsActions.addGroupFailed('Something went wrong')
-          }
-        }),
-        catchError((error) => groupsActions.addGroupFailed(error.message))
+        map(({response}) => groupsActions.added({group: response})),
+        catchError(({response: errors}) => {
+          const errorsWithUniqId = errors.map((error) => ({
+            ...error,
+            id: Symbol(),
+          }))
+
+          return errorsActions.add({
+            errors: errorsWithUniqId,
+            errorsOwner,
+          })
+        })
       )
     )
   )

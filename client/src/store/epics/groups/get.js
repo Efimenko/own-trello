@@ -7,13 +7,13 @@ import {
   inProgressActions,
   errorsActions,
 } from 'store/actions/creators'
-import {types} from '../../actions/types'
+import {groupsTypes} from '../../actions/types'
 import {getAuthHeaderFromLocalStorage} from '../utils'
 import {of, concat} from 'rxjs'
 
 export const getGroupsEpic = ($action) => {
   return $action.pipe(
-    ofType(types.GET_GROUPS),
+    ofType(groupsTypes.GET),
     switchMap(({payload: {errorsOwner, inProgressEvent}}) =>
       concat(
         of(inProgressActions.add({inProgressEvent})),
@@ -25,7 +25,7 @@ export const getGroupsEpic = ($action) => {
         }).pipe(
           flatMap(({response: groups}) =>
             concat(
-              of(groupsActions.addGroupFulfilled({group: groups})),
+              of(groupsActions.added({group: groups})),
               of(inProgressActions.remove({inProgressEvent}))
             )
           ),

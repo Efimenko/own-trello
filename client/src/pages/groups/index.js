@@ -20,7 +20,7 @@ export const GroupsPage = () => {
   useEffect(() => {
     if (!groups && !fetchGroupsInProgress) {
       dispatch(
-        groupsActions.getGroups({
+        groupsActions.get({
           errorsOwner: 'groupsPage',
           inProgressEvent: 'fetchGroups',
         })

@@ -1,14 +1,14 @@
-import {types} from 'store/actions/types'
+import {groupsTypes} from 'store/actions/types'
 const defaultState = null
 
 export const groups = (state = defaultState, {type, payload}) => {
   switch (type) {
-    case types.ADD_GROUP_FULFILLED:
+    case groupsTypes.ADDED:
       return [
         ...(state || []),
         ...(Array.isArray(payload) ? payload : [payload]),
       ]
-    case types.CLEAR_GROUPS:
+    case groupsTypes.CLEAR:
       return defaultState
     default:
       return state

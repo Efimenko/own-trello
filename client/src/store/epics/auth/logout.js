@@ -11,8 +11,8 @@ export const logOutUserEpic = (action$) => {
     switchMap(() =>
       concat(
         of(authActions.clearUser()),
-        of(groupsActions.clearGroups()),
-        of(tasksActions.clearTasks())
+        of(groupsActions.clear()),
+        of(tasksActions.clear())
       )
     )
   )
