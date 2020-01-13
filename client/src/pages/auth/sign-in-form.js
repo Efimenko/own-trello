@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 
-import {authActions} from 'store/actions/creators'
+import {userActions} from 'store/actions/creators'
 
 export const SignInForm = () => {
   const [emailValue, setEmailValue] = useState('')
@@ -13,9 +13,10 @@ export const SignInForm = () => {
     event.preventDefault()
     setLoading(true)
     dispatch(
-      authActions.loginUser({
+      userActions.login({
         email: emailValue,
         password: passwordValue,
+        errorsOwner: 'SignInForm',
       })
     )
   }

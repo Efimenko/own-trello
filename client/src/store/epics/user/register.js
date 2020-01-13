@@ -3,9 +3,9 @@ import {of, concat} from 'rxjs'
 import {switchMap, catchError, map} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
-import {types} from 'store/actions/types'
+import {userTypes} from 'store/actions/types'
 import {
-  authActions,
+  userActions,
   inProgressActions,
   errorsActions,
 } from 'store/actions/creators'
@@ -13,7 +13,7 @@ import {setAuthHeaderToLocalStorage} from '../utils'
 
 export const registerUserEpic = (action$) => {
   return action$.pipe(
-    ofType(types.REGISTER_USER),
+    ofType(userTypes.REGISTER),
     switchMap(
       ({payload: {name, email, password, errorsOwner, inProgressEvent}}) =>
         concat(
@@ -31,7 +31,7 @@ export const registerUserEpic = (action$) => {
               const AuthorizationHeader = xhr.getResponseHeader('Authorization')
               setAuthHeaderToLocalStorage({header: AuthorizationHeader})
               return [
-                authActions.addUser({_id, name, email}),
+                userActions.add({_id, name, email}),
                 inProgressActions.remove({inProgressEvent}),
               ]
             }),

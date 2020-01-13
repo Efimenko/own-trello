@@ -4,11 +4,11 @@ import {loginUserEpic} from './login'
 import {loginUserByTokenEpic} from './loginbytoken'
 import {logOutUserEpic} from './logout'
 
-const authEpicsHash = {
+const userEpicsHash = {
   registerUserEpic,
   loginUserEpic,
   loginUserByTokenEpic,
   logOutUserEpic,
 }
 
-export const authEpics = combineEpics(...Object.values(authEpicsHash))
+export const userEpics = combineEpics(...Object.values(userEpicsHash))

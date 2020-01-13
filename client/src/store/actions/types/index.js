@@ -1,13 +1,5 @@
 export {tasksTypes} from './tasks'
 export {groupsTypes} from './groups'
-import {authTypes} from './auth'
+export {userTypes} from './user'
 export {errorsTypes} from './errors'
 export {inProgressTypes} from './in-progress'
-
-export const types = {
-  // ...groupsTypes,
-  // ...tasksTypes,
-  ...authTypes,
-  // ...errorsTypes,
-  // ...inProgressTypes,
-}

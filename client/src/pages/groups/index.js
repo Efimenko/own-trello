@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 
 import GroupList from 'components/group-list/index'
-import {authActions, tasksActions, groupsActions} from 'store/actions/creators'
+import {userActions, tasksActions, groupsActions} from 'store/actions/creators'
 
 export const GroupsPage = () => {
   const groups = useSelector((state) => state.groups)
@@ -38,7 +38,7 @@ export const GroupsPage = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem('authToken')
-    dispatch(authActions.logOutUser())
+    dispatch(userActions.logOut())
   }
 
   return shouldBeShownLoading ? (

@@ -1,7 +1,7 @@
 import React, {useState, useRef, useMemo, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {authActions, errorsActions} from 'store/actions/creators'
+import {userActions, errorsActions} from 'store/actions/creators'
 
 const getErrorObjectByDataPath = ({dataPath, errors}) => {
   return errors.find((error) => error.dataPath === dataPath)
@@ -46,7 +46,7 @@ export const SignUpForm = () => {
     event.preventDefault()
     setLoading(true)
     dispatch(
-      authActions.registerUser({
+      userActions.register({
         name: nameValue,
         email: emailValue,
         password: passwordValue,

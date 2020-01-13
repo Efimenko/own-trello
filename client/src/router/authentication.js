@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {PropTypes} from 'prop-types'
 
-import {authActions} from 'store/actions/creators'
+import {userActions} from 'store/actions/creators'
 
 export const Authentication = ({children}) => {
   const user = useSelector((state) => state.user)
@@ -12,7 +12,12 @@ export const Authentication = ({children}) => {
 
   useEffect(() => {
     if (!user && authToken) {
-      dispatch(authActions.loginUserByToken({token: authToken}))
+      dispatch(
+        userActions.loginByToken({
+          token: authToken,
+          errorsOwner: 'Authentication',
+        })
+      )
     }
     if (user) {
       setFetchingUser(false)
