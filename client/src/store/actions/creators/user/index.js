@@ -42,7 +42,7 @@ export const loginByToken = ({token, errorsOwner}) => ({
 // })
 
 export const logOut = () => ({
-  type: userTypes.LOG_OUT_USER,
+  type: userTypes.LOG_OUT,
 })
 
 export const clear = () => ({
