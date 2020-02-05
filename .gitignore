@@ -4,3 +4,5 @@ client/dist
 .vscode
 **/.env
 .DS_Store
+api/coverage
+client/coverage
