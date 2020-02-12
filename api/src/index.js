@@ -1,11 +1,19 @@
 const express = require('express')
 const mongoose = require('mongoose')
-require('dotenv').config()
+const dotenv = require('dotenv')
 
 const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
 const authRouter = require('./routes/auth')
 const {logger, reqResLogger} = require('./logger')
+
+const result = dotenv.config()
+
+if (result.error) {
+  logger.error({err: result.error})
+} else {
+  logger.info('.env file successful initialized')
+}
 
 mongoose.connect(
   'mongodb://localhost:27017/trello',
