@@ -1,0 +1,14 @@
+[ignore]
+.*/node_modules/@parcel/watcher/test/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
+
+[untyped]
