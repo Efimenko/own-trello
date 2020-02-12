@@ -1,4 +1,18 @@
-export const getTasksByParentId = ({parentId, tasks}) =>
+// @flow
+
+type Task = {
+  parent: string,
+}
+
+type getTasksByParentIdPropT = {
+  parentId: string,
+  tasks: Array<Task>,
+}
+
+export const getTasksByParentId = ({
+  parentId,
+  tasks,
+}: getTasksByParentIdPropT): Array<Task> =>
   tasks.filter((task) => task.parent === parentId)
 
 export const getUniqId = () =>
