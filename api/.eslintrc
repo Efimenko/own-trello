@@ -11,12 +11,15 @@
     "module": true,
     "exports": true,
     "Buffer": true,
+    "beforeEach": true,
     "beforeAll": true,
     "afterEach": true,
     "afterAll": true,
     "describe": true,
     "it": true,
-    "expect": true
+    "expect": true,
+    "Promise": true,
+    "jest": true
   },
   "rules": {
     "no-var": "error",

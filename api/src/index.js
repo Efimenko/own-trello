@@ -5,9 +5,9 @@ const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
 const authRouter = require('./routes/auth')
 const {logger, reqResLogger} = require('./logger')
-const {envInitialize} = require('./config')
+const {initializeEnv} = require('./config')
 
-envInitialize()
+initializeEnv()
 
 mongoose.connect(
   'mongodb://localhost:27017/trello',

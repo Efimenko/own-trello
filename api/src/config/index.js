@@ -1,3 +1,3 @@
-const {envInitialize} = require('./env-initialize')
+const {initializeEnv} = require('./env')
 
-exports.envInitialize = envInitialize
+exports.initializeEnv = initializeEnv
