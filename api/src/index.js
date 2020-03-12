@@ -1,23 +1,14 @@
 const express = require('express')
-const mongoose = require('mongoose')
 
 const taskRouter = require('./routes/task')
 const groupRouter = require('./routes/group')
 const authRouter = require('./routes/auth')
 const {logger, reqResLogger} = require('./logger')
-const {initializeEnv} = require('./config')
+const {initializeEnv, connectToDB} = require('./config')
 
 initializeEnv()
 
-mongoose.connect(
-  'mongodb://localhost:27017/trello',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  },
-  () => logger.info('Connected to MongoDB')
-)
+connectToDB()
 
 /* Initiate express app */
 const app = express()
