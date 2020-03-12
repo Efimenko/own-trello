@@ -6,7 +6,7 @@ const userValidationSchema = {
     properties: {
       name: {
         type: 'string',
-        minLength: 3,
+        minLength: 5,
         maxLength: 100,
       },
       email: {
