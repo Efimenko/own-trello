@@ -1,6 +1,6 @@
 import {ofType} from 'redux-observable'
 import {of, concat} from 'rxjs'
-import {switchMap, catchError, map} from 'rxjs/operators'
+import {switchMap, catchError, concatMap} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
 import {userTypes} from '__store/actions/types'
@@ -27,13 +27,13 @@ export const registerUserEpic = (action$) => {
             },
             body: JSON.stringify({name, email, password}),
           }).pipe(
-            map(({response: {_id, name, email}, xhr}) => {
+            concatMap(({response: {_id, name, email}, xhr}) => {
               const AuthorizationHeader = xhr.getResponseHeader('Authorization')
               setAuthHeaderToLocalStorage({header: AuthorizationHeader})
-              return [
+              return of(
                 userActions.add({_id, name, email}),
-                inProgressActions.remove({inProgressEvent}),
-              ]
+                inProgressActions.remove({inProgressEvent})
+              )
             }),
             catchError(({response: errors}) => {
               const errorsWithUniqId = errors.map((error) => ({
@@ -41,14 +41,12 @@ export const registerUserEpic = (action$) => {
                 id: Symbol(),
               }))
 
-              return concat(
-                of(inProgressActions.remove({inProgressEvent})),
-                of(
-                  errorsActions.add({
-                    errors: errorsWithUniqId,
-                    errorsOwner,
-                  })
-                )
+              return of(
+                inProgressActions.remove({inProgressEvent}),
+                errorsActions.add({
+                  errors: errorsWithUniqId,
+                  errorsOwner,
+                })
               )
             })
           )
