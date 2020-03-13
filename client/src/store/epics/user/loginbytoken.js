@@ -1,6 +1,7 @@
 import {ofType} from 'redux-observable'
 import {switchMap, catchError, map} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
+import {of} from 'rxjs'
 
 import {userTypes} from 'store/actions/types'
 import {userActions, errorsActions} from 'store/actions/creators'
@@ -22,15 +23,20 @@ export const loginUserByTokenEpic = (action$) => {
           userActions.add({_id, name, email})
         ),
         catchError(({response: errors}) => {
-          const errorsWithUniqId = errors.map((error) => ({
-            ...error,
-            id: Symbol(),
-          }))
+          const singleError = !Array.isArray(errors)
+          const errorsWithUniqId = (singleError ? [errors] : errors).map(
+            (error) => ({
+              ...error,
+              id: Symbol(),
+            })
+          )
 
-          return errorsActions.add({
-            errors: errorsWithUniqId,
-            errorsOwner,
-          })
+          return of(
+            errorsActions.add({
+              errors: errorsWithUniqId,
+              errorsOwner,
+            })
+          )
         })
       )
     })

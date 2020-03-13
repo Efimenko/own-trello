@@ -34,10 +34,13 @@ export const getTasksEpic = ($action) => {
             )
           }),
           catchError(({response: errors}) => {
-            const errorsWithUniqId = errors.map((error) => ({
-              ...error,
-              id: Symbol(),
-            }))
+            const singleError = !Array.isArray(errors)
+            const errorsWithUniqId = (singleError ? [errors] : errors).map(
+              (error) => ({
+                ...error,
+                id: Symbol(),
+              })
+            )
 
             return concat(
               of(
