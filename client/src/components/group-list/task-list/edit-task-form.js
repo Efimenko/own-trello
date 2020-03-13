@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {tasksActions} from 'store/actions/creators/index'
+import {tasksActions} from '__store/actions/creators/index'
 
 const EditTaskFormView = ({
   task,

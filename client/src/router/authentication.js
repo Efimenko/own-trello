@@ -2,7 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {PropTypes} from 'prop-types'
 
-import {userActions, errorsActions} from 'store/actions/creators'
+import {userActions, errorsActions} from '__store/actions/creators'
 import {ERRORS} from '__constants'
 
 const getAuthTokenError = (errors) => {

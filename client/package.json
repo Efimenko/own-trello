@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "alias": {
-    "store": "./src/store",
+    "__store": "./src/store",
     "__components": "./src/components",
     "__pages": "./src/pages",
     "__utils": "./src/utils",

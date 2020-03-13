@@ -1,7 +1,7 @@
 import React, {useState, useMemo} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {userActions, errorsActions} from 'store/actions/creators'
+import {userActions, errorsActions} from '__store/actions/creators'
 
 const getErrorObjectByDataPath = ({dataPath, errors}) => {
   return errors.find((error) => error.dataPath === dataPath)

@@ -3,12 +3,12 @@ import {of, concat} from 'rxjs'
 import {switchMap, catchError, map} from 'rxjs/operators'
 import {ajax} from 'rxjs/ajax'
 
-import {userTypes} from 'store/actions/types'
+import {userTypes} from '__store/actions/types'
 import {
   userActions,
   inProgressActions,
   errorsActions,
-} from 'store/actions/creators'
+} from '__store/actions/creators'
 import {setAuthHeaderToLocalStorage} from '../utils'
 
 export const registerUserEpic = (action$) => {

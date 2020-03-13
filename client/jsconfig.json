@@ -5,8 +5,8 @@
       "allowSyntheticDefaultImports": true,
       "baseUrl": "./",
       "paths": {
-        "store": ["src/store"],
-        "store/*": ["src/store/*"],
+        "__store": ["src/store"],
+        "__store/*": ["src/store/*"],
         "__utils": ["utils"],
         "__utils/*": ["utils/*"],
         "__components": ["src/components"],

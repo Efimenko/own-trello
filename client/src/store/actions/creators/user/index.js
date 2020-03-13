@@ -1,4 +1,4 @@
-import {userTypes} from 'store/actions/types'
+import {userTypes} from '__store/actions/types'
 
 export const register = ({
   name,

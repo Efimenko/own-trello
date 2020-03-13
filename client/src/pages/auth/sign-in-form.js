@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {userActions} from 'store/actions/creators'
+import {userActions} from '__store/actions/creators'
 
 export const SignInForm = () => {
   const [emailValue, setEmailValue] = useState('')

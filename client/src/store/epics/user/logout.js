@@ -1,8 +1,8 @@
 import {ofType} from 'redux-observable'
 import {switchMap} from 'rxjs/operators'
 
-import {userTypes} from 'store/actions/types'
-import {userActions, groupsActions, tasksActions} from 'store/actions/creators'
+import {userTypes} from '__store/actions/types'
+import {userActions, groupsActions, tasksActions} from '__store/actions/creators'
 import {concat, of} from 'rxjs'
 
 export const logOutUserEpic = (action$) => {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {groupsActions} from 'store/actions/creators'
+import {groupsActions} from '__store/actions/creators'
 
 const AddGroupFormView = ({dispatch}) => {
   const [newGroupInputValue, setNewGroupInputValue] = useState('')
