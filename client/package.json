@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
     "clear": "rm -rf ./dist",
-    "flow": "flow"
+    "flow": "flow",
+    "lint:eslint": "eslint --ext .js,.jsx ."
   },
   "keywords": [],
   "author": "",
