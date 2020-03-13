@@ -3,11 +3,10 @@ import {useSelector, useDispatch} from 'react-redux'
 import {PropTypes} from 'prop-types'
 
 import {userActions, errorsActions} from 'store/actions/creators'
-
-const INVALID_TOKEN_ERROR = 'JsonWebTokenError'
+import {ERRORS} from '__constants'
 
 const getAuthTokenError = (errors) => {
-  return errors.find(({name}) => name === INVALID_TOKEN_ERROR)
+  return errors.find(({name}) => name === ERRORS.invalidToken)
 }
 
 export const Authentication = ({children}) => {
