@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
-import {AuthPage, GroupsPage} from 'pages'
+import {AuthPage, GroupsPage} from '__pages'
 import {Authentication} from './authentication'
 import {RedirectsResolver} from './redirects-resolver'
 

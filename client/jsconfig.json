@@ -11,8 +11,8 @@
         "utils/*": ["utils/*"],
         "components": ["src/components"],
         "components/*": ["src/components/*"],
-        "pages": ["src/pages"],
-        "pages/*": ["src/pages/*"],
+        "__pages": ["src/pages"],
+        "__pages/*": ["src/pages/*"],
         "__constants": ["src/constants"],
         "__constants/*": ["src/constants/*"]
       }
