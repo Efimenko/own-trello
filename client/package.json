@@ -33,7 +33,6 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "airbnb-prop-types": "^2.15.0",
     "ajv": "^6.10.2",
     "postcss-modules": "^1.4.1",
     "react": "^16.12.0",
