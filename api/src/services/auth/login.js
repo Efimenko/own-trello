@@ -16,7 +16,13 @@ const login = ({email, password}) => {
         const token = jwt.sign({_id: user._id}, process.env.SECRET_KEY)
         return {status: 200, token, data: omit(['password'])(user)}
       } else {
-        return {status: 401, data: 'Unauthorized'}
+        return {
+          status: 401,
+          data: {
+            name: 'AuthorizationError',
+            message: 'Email or password wrong',
+          },
+        }
       }
     })
     .catch((err) => ({status: 500, data: err.message}))

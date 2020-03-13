@@ -11,7 +11,13 @@ const loginByToken = ({token}) => {
       if (user) {
         return {status: 200, data: omit(['password'])(user)}
       } else {
-        return {status: 401, data: 'Unauthorized'}
+        return {
+          status: 401,
+          data: {
+            name: 'AuthorizationError',
+            message: 'Email or password wrong',
+          },
+        }
       }
     })
     .catch((err) => ({status: 500, data: err.message}))
