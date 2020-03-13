@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 
-import GroupList from 'components/group-list/index'
+import GroupList from '__components/group-list/index'
 import {userActions, tasksActions, groupsActions} from 'store/actions/creators'
 
 export const GroupsPage = () => {

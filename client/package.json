@@ -14,7 +14,7 @@
   "license": "ISC",
   "alias": {
     "store": "./src/store",
-    "components": "./src/components",
+    "__components": "./src/components",
     "__pages": "./src/pages",
     "__utils": "./src/utils",
     "__constants": "./src/constants"
