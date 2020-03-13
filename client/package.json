@@ -16,7 +16,8 @@
     "store": "./src/store",
     "components": "./src/components",
     "pages": "./src/pages",
-    "utils": "./src/utils"
+    "utils": "./src/utils",
+    "constants": "./src/constants"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

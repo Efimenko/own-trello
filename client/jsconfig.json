@@ -12,7 +12,9 @@
         "components": ["src/components"],
         "components/*": ["src/components/*"],
         "pages": ["src/pages"],
-        "pages/*": ["src/pages/*"]
+        "pages/*": ["src/pages/*"],
+        "constants": ["src/constants"],
+        "constants/*": ["src/constants/*"]
       }
   }
 }
