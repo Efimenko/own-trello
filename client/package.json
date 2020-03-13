@@ -8,7 +8,8 @@
     "start": "parcel index.html",
     "clear": "rm -rf ./dist",
     "flow": "flow",
-    "lint:eslint": "eslint --ext .js,.jsx ."
+    "lint:eslint": "eslint --ext .js,.jsx .",
+    "lint:eslint:fix": "eslint --fix --ext .js,.jsx ."
   },
   "keywords": [],
   "author": "",
