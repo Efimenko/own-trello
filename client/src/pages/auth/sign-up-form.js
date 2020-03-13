@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo, useEffect} from 'react'
+import React, {useState, useMemo} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {userActions, errorsActions} from 'store/actions/creators'
@@ -14,14 +14,10 @@ export const SignUpForm = () => {
   const userRegistrationInProgress = useSelector(
     (state) => state.inProgress.userRegistration
   )
-  const [loading, setLoading] = useState(Boolean(userRegistrationInProgress))
-  const dispatch = useDispatch()
-  const errorsOwner = useRef(`SignUpForm-${Date.now()}`)
-  const errors = useSelector((state) => state.errors[errorsOwner.current]) || []
 
-  useEffect(() => {
-    setLoading(Boolean(userRegistrationInProgress))
-  }, [userRegistrationInProgress])
+  const dispatch = useDispatch()
+  const errorsOwner = 'SignUpForm'
+  const errors = useSelector((state) => state.errors[errorsOwner]) || []
 
   const nameError = useMemo(
     () => getErrorObjectByDataPath({dataPath: '.name', errors}),
@@ -44,13 +40,13 @@ export const SignUpForm = () => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    setLoading(true)
+
     dispatch(
       userActions.register({
         name: nameValue,
         email: emailValue,
         password: passwordValue,
-        errorsOwner: errorsOwner.current,
+        errorsOwner,
         inProgressEvent: 'userRegistration',
       })
     )
@@ -76,7 +72,7 @@ export const SignUpForm = () => {
       dispatch(
         errorsActions.remove({
           errorId: inputsData[type].error.id,
-          errorsOwner: errorsOwner.current,
+          errorsOwner,
         })
       )
     }
@@ -122,10 +118,15 @@ export const SignUpForm = () => {
         id="sign-up-password"
         required
       />
+      {/* TODO: Create error component */}
       {passwordError && (
         <div style={{color: '#f00'}}>{passwordError.message}</div>
       )}
-      <button type="submit" disabled={loading || hasError}>
+      <button
+        type="submit"
+        disabled={userRegistrationInProgress || hasError}
+        title={hasError && 'You should fix your mistakes for enabling button'}
+      >
         Register
       </button>
     </form>
