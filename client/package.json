@@ -16,7 +16,7 @@
     "store": "./src/store",
     "components": "./src/components",
     "__pages": "./src/pages",
-    "utils": "./src/utils",
+    "__utils": "./src/utils",
     "__constants": "./src/constants"
   },
   "devDependencies": {

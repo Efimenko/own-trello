@@ -7,8 +7,8 @@
       "paths": {
         "store": ["src/store"],
         "store/*": ["src/store/*"],
-        "utils": ["utils"],
-        "utils/*": ["utils/*"],
+        "__utils": ["utils"],
+        "__utils/*": ["utils/*"],
         "components": ["src/components"],
         "components/*": ["src/components/*"],
         "__pages": ["src/pages"],
