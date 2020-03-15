@@ -1,12 +1,7 @@
 // @flow
 
 import {errorsTypes} from '../actions/types'
-
-type IdT = symbol
-
-type ErrorT = {
-  id: IdT,
-}
+import type {ErrorsIdT, ErrorT, ErrorsOwnerT} from '../types/errors'
 
 type StateT = {
   [string]: $ReadOnlyArray<ErrorT>,
@@ -15,9 +10,9 @@ type StateT = {
 type ReducerOptionT = {
   type: string,
   payload: {
-    errorsId: IdT | $ReadOnlyArray<IdT>,
+    errorsId: ErrorsIdT,
     errors: $ReadOnlyArray<ErrorT>,
-    errorsOwner: string,
+    errorsOwner: ErrorsOwnerT,
   },
 }
 
