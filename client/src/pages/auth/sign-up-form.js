@@ -36,7 +36,7 @@ export const SignUpForm = () => {
     [errors]
   )
 
-  const hasError = nameError || emailError || passwordError
+  const hasErrors = nameError || emailError || passwordError
 
   const handleSubmitForm = (event) => {
     event.preventDefault()
@@ -124,8 +124,10 @@ export const SignUpForm = () => {
       )}
       <button
         type="submit"
-        disabled={userRegistrationInProgress || hasError}
-        title={hasError && 'You should fix your mistakes for enabling button'}
+        disabled={userRegistrationInProgress || hasErrors}
+        title={
+          hasErrors ? 'You should fix your mistakes for enabling button' : ''
+        }
       >
         Register
       </button>
