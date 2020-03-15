@@ -8,11 +8,12 @@ const getErrorObjectByDataPath = ({dataPath, errors}) => {
 }
 
 export const SignUpForm = () => {
+  const inProgressEvent = 'userRegistration'
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
   const userRegistrationInProgress = useSelector(
-    (state) => state.inProgress.userRegistration
+    (state) => state.inProgress[inProgressEvent]
   )
 
   const dispatch = useDispatch()
@@ -47,7 +48,7 @@ export const SignUpForm = () => {
         email: emailValue,
         password: passwordValue,
         errorsOwner,
-        inProgressEvent: 'userRegistration',
+        inProgressEvent,
       })
     )
   }
