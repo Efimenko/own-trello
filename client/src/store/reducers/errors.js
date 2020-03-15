@@ -15,8 +15,10 @@ export const errors = (state = defaultState, {type, payload}) => {
       return {
         ...state,
         [payload.errorsOwner]: [
-          ...(state[payload.errorsOwner].filter(
-            (error) => error.id !== payload.errorId
+          ...(state[payload.errorsOwner].filter((error) =>
+            Array.isArray(payload.errorId)
+              ? !payload.errorId.includes(error.id)
+              : error.id !== payload.errorId
           ) || []),
         ],
       }
