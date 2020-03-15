@@ -15,7 +15,7 @@ type StateT = {
 type ReducerOptionT = {
   type: string,
   payload: {
-    errorId: IdT | $ReadOnlyArray<IdT>,
+    errorsId: IdT | $ReadOnlyArray<IdT>,
     errors: $ReadOnlyArray<ErrorT>,
     errorsOwner: string,
   },
@@ -41,9 +41,9 @@ export const errors = (
         ...state,
         [payload.errorsOwner]: [
           ...(state[payload.errorsOwner].filter((error) =>
-            Array.isArray(payload.errorId)
-              ? !payload.errorId.includes(error.id)
-              : error.id !== payload.errorId
+            Array.isArray(payload.errorsId)
+              ? !payload.errorsId.includes(error.id)
+              : error.id !== payload.errorsId
           ) || []),
         ],
       }

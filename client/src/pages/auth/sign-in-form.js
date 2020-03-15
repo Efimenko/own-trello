@@ -62,7 +62,7 @@ export const SignInForm = () => {
     if (authError) {
       dispatch(
         errorsActions.remove({
-          errorId: authError.id,
+          errorsId: authError.id,
           errorsOwner,
         })
       )

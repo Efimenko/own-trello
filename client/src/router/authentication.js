@@ -37,7 +37,7 @@ export const Authentication = ({children}) => {
       localStorage.removeItem('authToken')
       dispatch(
         errorsActions.remove({
-          errorId: authTokenError.id,
+          errorsId: authTokenError.id,
           errorsOwner,
         })
       )

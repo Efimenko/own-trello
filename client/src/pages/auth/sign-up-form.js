@@ -92,7 +92,7 @@ export const SignUpForm = () => {
     if (hasErrors) {
       dispatch(
         errorsActions.remove({
-          errorId: [nameError.id, emailError.id, passwordError.id],
+          errorsId: [nameError.id, emailError.id, passwordError.id],
           errorsOwner,
         })
       )

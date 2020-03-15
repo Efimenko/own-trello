@@ -1,9 +1,9 @@
 import {errorsTypes} from '../../types'
 
 /* Remove error action creator */
-export const remove = ({errorId, errorsOwner}) => ({
+export const remove = ({errorsId, errorsOwner}) => ({
   type: errorsTypes.REMOVE,
-  payload: {errorId, errorsOwner},
+  payload: {errorsId, errorsOwner},
 })
 
 export const add = ({errors, errorsOwner}) => ({
