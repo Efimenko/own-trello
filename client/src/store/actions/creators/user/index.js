@@ -21,9 +21,9 @@ export const add = ({_id, name, email}) => ({
 //   payload: {errors, errorsOwner},
 // })
 
-export const login = ({email, password, errorsOwner}) => ({
+export const login = ({email, password, errorsOwner, inProgressEvent}) => ({
   type: userTypes.LOGIN,
-  payload: {email, password, errorsOwner},
+  payload: {email, password, errorsOwner, inProgressEvent},
 })
 
 // export const loginUserFailed = ({message}) => ({
